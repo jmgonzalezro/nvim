@@ -18,8 +18,24 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'joshdick/onedark.vim'
     " Intellisense
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
+    " Pops up a menu with hotkeys
+    Plug 'folke/which-key.nvim'
+    " Start screen
+    Plug 'mhinz/vim-startify'
+    " Fuzzy find
+    Plug 'junegunn/fzf', { 'do': { -> fzf#install()  }  }
+    Plug 'junegunn/fzf.vim'
+    Plug 'airblade/vim-rooter'
+    " Status bar / tab line
+    Plug 'vim-airline/vim-airline'
+    Plug 'vim-airline/vim-airline-themes'
+    " Gruvbox themes
+    " Plug 'rktjmp/lush.nvim'
+     "Plug 'ellisonleao/gruvbox.nvim'
+    " Gruvbox real themes
+    Plug 'morhetz/gruvbox'
 
 
-call plug#end()
+    call plug#end()
 
 " Automatically install missing plugins on startup
