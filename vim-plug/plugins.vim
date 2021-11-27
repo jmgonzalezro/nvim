@@ -34,8 +34,13 @@ call plug#begin('~/.config/nvim/autoload/plugged')
      "Plug 'ellisonleao/gruvbox.nvim'
     " Gruvbox real themes
     Plug 'morhetz/gruvbox'
+    " Git integration
+    Plug 'mhinz/vim-signify'
+    Plug 'tpope/vim-fugitive'
+    Plug 'tpope/vim-rhubarb'
+    Plug 'junegunn/gv.vim'    
 
 
-    call plug#end()
+call plug#end()
 
 " Automatically install missing plugins on startup
