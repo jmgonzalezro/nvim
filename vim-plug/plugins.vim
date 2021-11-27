@@ -39,7 +39,8 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'tpope/vim-fugitive'
     Plug 'tpope/vim-rhubarb'
     Plug 'junegunn/gv.vim'    
-
+    " Quickscope: To jump through the line using f or F
+    Plug 'unblevable/quick-scope'    
 
 call plug#end()
 
