@@ -9,10 +9,7 @@
   [
     "UltiSnips",
     "~/.config/nvim/utils/snips"
-  ]
-
-}
-
+  ],
 "suggest.completionItemKindLabels": {
     "method": "  ",
     "function": "  ",
@@ -39,4 +36,5 @@
     "constructor": "  ",
     "value": "  ",
     "enumMember": "  "
-  },
+  }
+}

@@ -41,7 +41,15 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'junegunn/gv.vim'    
     " Quickscope: To jump through the line using f or F
     Plug 'unblevable/quick-scope'    
+    " Floaterm
+    Plug 'voldikss/vim-floaterm'
+    " If you don't have nodejs and yarn
+    " use pre build, add 'vim-plug' to the filetype list so vim-plug can update this plugin
+    " see: https://github.com/iamcco/markdown-preview.nvim/issues/50
+    Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 
-call plug#end()
+
+
+    call plug#end()
 
 " Automatically install missing plugins on startup
