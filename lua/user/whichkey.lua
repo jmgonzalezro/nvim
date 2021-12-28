@@ -96,6 +96,18 @@ local mappings = {
   ["F"] = { "<cmd>Telescope live_grep theme=ivy<cr>", "Find Text" },
   ["P"] = { "<cmd>Telescope projects<cr>", "Projects" },
 
+  W = {
+    name = 'Vim Wiki',
+    w = { "<cmd>VimwikiIndex<cr>", "Index"},
+    t = { "<mcd>VimwikiTabIndex<cr>", "Index in tab"},
+    s = { "<cmd>VimwikiUISelect<cr>", "List wikis"},
+    i = { "<cmd>VimwikiDiaryIndex<cr>", "Diary index"},
+    W = { "<cmd>VimwikiMakeDiaryNote<cr>", "Diary for today"},
+    T = { "<cmd>VimwikiTabMakeDiaryNote<cr>", "Diary today tab"},
+    Y = { "<cmd>VimwikiMakeYesterdayDiaryNote<cr>", "Diary yesterday"},
+    M = { "<cmd>VimwikiMakeTomorrowDiaryNote<cr>", "Diary tomorrow"},
+  },
+
   p = {
     name = "Packer",
     c = { "<cmd>PackerCompile<cr>", "Compile" },

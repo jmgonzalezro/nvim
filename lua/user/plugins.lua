@@ -91,10 +91,12 @@ return packer.startup(function(use)
     run = ":TSUpdate",
   }
   use "JoosepAlviste/nvim-ts-context-commentstring"
-
+  use "p00f/nvim-ts-rainbow" -- rainbow parenthesis
   -- Git
   use "lewis6991/gitsigns.nvim"
-
+  
+  -- VimWiki
+  use 'vimwiki/vimwiki'
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if PACKER_BOOTSTRAP then
