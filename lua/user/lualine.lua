@@ -58,9 +58,10 @@ local progress = function()
 	return chars[index]
 end
 
-local spaces = function()
-	return "spaces: " .. vim.api.nvim_buf_get_option(0, "shiftwidth")
-end
+-- I'm not displaying spaces, so we don't need this function
+-- local spaces = function()
+-- 	return "spaces: " .. vim.api.nvim_buf_get_option(0, "shiftwidth")
+-- end
 
 lualine.setup({
 	options = {
@@ -76,7 +77,8 @@ lualine.setup({
 		lualine_b = { mode },
 		lualine_c = {},
 		-- lualine_x = { "encoding", "fileformat", "filetype" },
-		lualine_x = { diff, spaces, "encoding", filetype },
+		-- lualine_x = { diff, spaces, "encoding", filetype },
+		lualine_x = { diff, "encoding", 'filetype', 'fileformat'},
 		lualine_y = { location },
 		lualine_z = { progress },
 	},
