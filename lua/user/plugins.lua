@@ -60,8 +60,9 @@ return packer.startup(function(use)
   use "folke/which-key.nvim"
 
   -- Colorschemes
-  use "lunarvim/colorschemes" -- A bunch of colorschemes you can try out
-  use "morhetz/gruvbox" -- Gruvbox colorschemes
+  -- use "lunarvim/colorschemes" -- A bunch of colorschemes you can try out
+  -- use "morhetz/gruvbox" -- Gruvbox colorschemes
+  use "sainnhe/gruvbox-material" 
   -- use "lunarvim/darkplus.nvim"
 
   -- cmp plugins
