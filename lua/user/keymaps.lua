@@ -40,7 +40,7 @@ keymap("n", "<A-j>", "<Esc>:m .+1<CR>==gi", opts)
 keymap("n", "<A-k>", "<Esc>:m .-2<CR>==gi", opts)
 
 -- Running the current buffer in Python
-keymap("n", "<A-CR>", ":w<CR>:!python3 %<CR>", opts)
+keymap("n", "<A-CR>", ":TermExec cmd='python3 %' size=10 direction=horizontal <CR>", opts)
 
 -- Insert --
 -- Press jk fast to exit
