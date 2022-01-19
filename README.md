@@ -8,5 +8,7 @@ Lead key is <space> and will pop up a menu with different hotkeys with access an
 ## Used pluggins.
 
 ## Used hotkeys.
+Lead key: <space>
+Escape: (press fast)j+k
 
 ## Used fonts.
