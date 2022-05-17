@@ -36,7 +36,6 @@ local options = {
 }
 
 vim.opt.shortmess:append "c"
-vim.wo.colorcolumn = '120'
 
 for k, v in pairs(options) do
   vim.opt[k] = v
