@@ -19,5 +19,6 @@ require "user.indentline"
 require "user.alpha"
 require "user.whichkey"
 require "user.autocommands"
+require "user.neoscroll"
 
 vim.wo.colorcolumn='80'

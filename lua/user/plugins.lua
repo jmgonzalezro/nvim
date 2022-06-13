@@ -102,7 +102,12 @@ return packer.startup(function(use)
 
   -- Whichkey
   use "folke/which-key.nvim"
+  
+  -- Wakatime
+  use 'wakatime/vim-wakatime'
 
+  -- Neoscroll
+  use 'karb94/neoscroll.nvim'
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
