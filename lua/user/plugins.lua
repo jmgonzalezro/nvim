@@ -106,8 +106,9 @@ return packer.startup(function(use)
   -- Wakatime
   use 'wakatime/vim-wakatime'
 
-  -- Neoscroll
-  use 'karb94/neoscroll.nvim'
+  -- Mini
+  use "echasnovski/mini.nvim"
+
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins

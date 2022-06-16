@@ -3,40 +3,15 @@ if not status_ok then
 	return
 end
 
-local dashboard = require("alpha.themes.dashboard")
-dashboard.section.header.val = {
-[[  .-''-.                      .--.  .-. .--------.                      .-''-.]],
-[[ /      `'''--..              ||  \/  ||'=====. ||              ..--'''`      \]],
-[[|               '.            || .  . ||  .---' ||            .'               |]],
-[[|           ..''` '---.       || |\/|_||  '===. ||       .---' `''..           |]],
-[[|        .``           ''''\  ||_|\/|.'       |_||  /''''           ``.        |]],
-[[/'..   /`              /    /'|_.'            '._|'\    \              `\   ..'\]],
-[[|   `:'         ___..  \   /  /                  \  \   /  ..___         ':`   |]],
-[['____'__...---'':::::\  '-' ./                    \. '-'  \:::::''---...__'____']],
-[[  \::/\ \:::::::::::':  ___/                        \___  :':::::::::::/ /\::/]],
-[[   \'| \ '-:::--'`  .' /              Rest              \ '.  `'--:::-' / |'/]],
-[[   /'|  \    ....''`__/                in                \__`''....    /  |'\]],
-[[   \ |   .   |  .-'`   .------. .------..------. .-. .--.   `'-.  |   .   | /]],
-[[    \/::.'   |  |      ||  _   V   _   ||   _   V  \/  ||      |  |   '.::\/]],
-[[    \':'_.---|  |      || | |  |  | |  ||  | |  | .  . ||      |  |---._':'/]],
-[[     \\      |  |      || | |  |   '|  ||  |'   | |\/| ||      |  |      //]],
-[[     \\      |  |      || |' .'|'.   .'||'.   .'|'|\/| ||      |  |      //]],
-[[      \\      | |      ||  .'.' '.'.'.'  '.'.'.' '|  | ||      | |      //]],
-[[      \\      | |      ||.'.'     '.'      '.'       |.||      | |      //]],
-[[       \\     |'       |_.'                          '._|       '|     //}]],
-[[]]}
-
-dashboard.section.buttons.val = {
-	dashboard.button("f", "  Find file", ":Telescope find_files <CR>"),
-	dashboard.button("e", "  New file", ":ene <BAR> startinsert <CR>"),
-	dashboard.button("p", "  Find project", ":Telescope projects <CR>"),
-	dashboard.button("r", "  Recently used files", ":Telescope oldfiles <CR>"),
-	dashboard.button("t", "  Find text", ":Telescope live_grep <CR>"),
-	dashboard.button("c", "  Configuration", ":e ~/.config/nvim/init.lua <CR>"),
-	dashboard.button("q", "  Quit Neovim", ":qa<CR>"),
+nvim = {
+	[[                               __                ]],
+	[[  ___     ___    ___   __  __ /\_\    ___ ___    ]],
+	[[ / _ `\  / __`\ / __`\/\ \/\ \\/\ \  / __` __`\  ]],
+	[[/\ \/\ \/\  __//\ \_\ \ \ \_/ |\ \ \/\ \/\ \/\ \ ]],
+	[[\ \_\ \_\ \____\ \____/\ \___/  \ \_\ \_\ \_\ \_\]],
+	[[ \/_/\/_/\/____/\/___/  \/__/    \/_/\/_/\/_/\/_/]],
 }
 
-name = 'MF Malcolm'
 doom = {
 [[  .-''-.                      .--.  .-. .--------.                      .-''-.]],
 [[ /      `'''--..              ||  \/  ||'=====. ||              ..--'''`      \]],
@@ -56,16 +31,22 @@ doom = {
 [[     \\      |  |      || |' .'|'.   .'||'.   .'|'|\/| ||      |  |      //]],
 [[      \\      | |      ||  .'.' '.'.'.'  '.'.'.' '|  | ||      | |      //]],
 [[      \\      | |      ||.'.'     '.'      '.'       |.||      | |      //]],
-[[       \\     |'       |_.'                          '._|       '|     //}]],
+[[       \\     |'       |_.'                          '._|       '|     //]],
 [[]]}
-nvim = {
-	[[                               __                ]],
-	[[  ___     ___    ___   __  __ /\_\    ___ ___    ]],
-	[[ / _ `\  / __`\ / __`\/\ \/\ \\/\ \  / __` __`\  ]],
-	[[/\ \/\ \/\  __//\ \_\ \ \ \_/ |\ \ \/\ \/\ \/\ \ ]],
-	[[\ \_\ \_\ \____\ \____/\ \___/  \ \_\ \_\ \_\ \_\]],
-	[[ \/_/\/_/\/____/\/___/  \/__/    \/_/\/_/\/_/\/_/]],
+
+local dashboard = require("alpha.themes.dashboard")
+dashboard.section.header.val = doom
+dashboard.section.buttons.val = {
+	dashboard.button("f", "  Find file", ":Telescope find_files <CR>"),
+	dashboard.button("e", "  New file", ":ene <BAR> startinsert <CR>"),
+	dashboard.button("p", "  Find project", ":Telescope projects <CR>"),
+	dashboard.button("r", "  Recently used files", ":Telescope oldfiles <CR>"),
+	dashboard.button("t", "  Find text", ":Telescope live_grep <CR>"),
+	dashboard.button("c", "  Configuration", ":e ~/.config/nvim/init.lua <CR>"),
+	dashboard.button("q", "  Quit Neovim", ":qa<CR>"),
 }
+
+name = 'MF Malcolm'
 
 local function footer()
 -- NOTE: requires the fortune-mod package to work
