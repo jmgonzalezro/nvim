@@ -20,5 +20,6 @@ require "user.alpha"
 require "user.whichkey"
 require "user.autocommands"
 require "user.mini"
+require "user.transparent"
 
 vim.wo.colorcolumn='80'

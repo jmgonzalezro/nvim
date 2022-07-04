@@ -109,6 +109,8 @@ return packer.startup(function(use)
   -- Mini
   use "echasnovski/mini.nvim"
 
+  -- Transparent
+  use "xiyaowong/nvim-transparent"
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
