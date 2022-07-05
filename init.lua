@@ -21,5 +21,7 @@ require "user.whichkey"
 require "user.autocommands"
 require "user.mini"
 require "user.transparent"
+require "user.cutlass"
+require "user.spectre"
 
 vim.wo.colorcolumn='80'

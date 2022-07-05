@@ -1,4 +1,4 @@
-    local fn = vim.fn
+local fn = vim.fn
 
 -- Automatically install packer
 local install_path = fn.stdpath "data" .. "/site/pack/packer/start/packer.nvim"
@@ -108,6 +108,12 @@ return packer.startup(function(use)
 
   -- Transparent
   use "xiyaowong/nvim-transparent"
+
+  -- Cutlass
+  use "gbprod/cutlass.nvim"
+
+  -- Spectre
+  use "windwp/nvim-spectre"
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
