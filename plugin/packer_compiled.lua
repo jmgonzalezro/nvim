@@ -126,7 +126,7 @@ _G.packer_plugins = {
   },
   ["cutlass.nvim"] = {
     loaded = true,
-    path = "/home/jmgonzalezro/.local/share/nvim/site/pack/packer/start/cutlass.nvim",
+    path = "/home/jose/.local/share/nvim/site/pack/packer/start/cutlass.nvim",
     url = "https://github.com/gbprod/cutlass.nvim"
   },
   ["darkplus.nvim"] = {
@@ -206,12 +206,12 @@ _G.packer_plugins = {
   },
   ["nvim-spectre"] = {
     loaded = true,
-    path = "/home/jmgonzalezro/.local/share/nvim/site/pack/packer/start/nvim-spectre",
+    path = "/home/jose/.local/share/nvim/site/pack/packer/start/nvim-spectre",
     url = "https://github.com/windwp/nvim-spectre"
   },
   ["nvim-transparent"] = {
     loaded = true,
-    path = "/home/jmgonzalezro/.local/share/nvim/site/pack/packer/start/nvim-transparent",
+    path = "/home/jose/.local/share/nvim/site/pack/packer/start/nvim-transparent",
     url = "https://github.com/xiyaowong/nvim-transparent"
   },
   ["nvim-tree.lua"] = {
