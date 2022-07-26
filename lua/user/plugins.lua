@@ -102,6 +102,9 @@ return packer.startup(function(use)
 
   -- Whichkey
   use "folke/which-key.nvim"
+  
+  -- Wakatime
+  use 'wakatime/vim-wakatime'
 
   -- Mini
   use "echasnovski/mini.nvim"

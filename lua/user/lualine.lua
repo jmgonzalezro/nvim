@@ -75,12 +75,13 @@ lualine.setup({
 	},
 	sections = {
 		lualine_a = { mode },
-		lualine_b = { branch, diagnostics },
+		lualine_b = { branch },
 		lualine_c = { "filename" },
 		-- lualine_x = { "encoding", "fileformat", "filetype" },
 		-- lualine_x = { diff, spaces, "encoding", filetype },
 		lualine_x = { diff, 'filetype', 'fileformat'},
-		lualine_y = { location },
+		-- lualine_y = { location },
+        lualine_y = { diagnostics },
 		lualine_z = { progress },
 	},
 	inactive_sections = {
