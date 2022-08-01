@@ -113,6 +113,7 @@ return packer.startup(function(use)
   use "xiyaowong/nvim-transparent"
 
   -- Cutlass
+  -- deletes or changes text without yanking it
   use "gbprod/cutlass.nvim"
 
   -- Spectre
