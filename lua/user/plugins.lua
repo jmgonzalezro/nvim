@@ -120,6 +120,27 @@ return packer.startup(function(use)
   -- Spectre
   use "windwp/nvim-spectre"
 
+  -- NeoDim
+use {
+  "zbirenbaum/neodim",
+  config = function ()
+    require("neodim").setup({
+      alpha = 0.75,
+      blend_color = "#000000",
+      update_in_insert = {
+        enable = true,
+        delay = 100,
+      },
+      hide = {
+        virtual_text = true,
+        signs = true,
+        underline = true,
+      }
+    })
+  end
+}
+
+
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if PACKER_BOOTSTRAP then
