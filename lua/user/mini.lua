@@ -1,5 +1,5 @@
 require('mini.cursorword').setup()
-  require('mini.surround').setup({
+require('mini.surround').setup({
     custom_surroundings = {
       s = {
         input = { find = '%[%[.-%]%]', extract = '^(..).*(..)$' },
