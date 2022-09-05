@@ -79,7 +79,8 @@ lualine.setup({
 		lualine_c = { "filename" },
 		-- lualine_x = { "encoding", "fileformat", "filetype" },
 		-- lualine_x = { diff, spaces, "encoding", filetype },
-		lualine_x = { diff, 'filetype', 'fileformat'},
+		--[[ lualine_x = { diff, 'filetype', 'fileformat'}, ]]
+        lualine_x = {{'filename', path = 1,}},
 		-- lualine_y = { location },
         lualine_y = { diagnostics },
 		lualine_z = { progress },
