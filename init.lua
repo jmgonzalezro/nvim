@@ -24,5 +24,6 @@ require "user.transparent"
 require "user.cutlass"
 require "user.spectre"
 require "user.treesitter-context"
+require "user.bufonly"
 
 vim.wo.colorcolumn='80'
