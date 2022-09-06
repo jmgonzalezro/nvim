@@ -38,7 +38,7 @@ keymap("n", "<S-l>", ":bnext<CR>", opts)
 keymap("n", "<S-h>", ":bprevious<CR>", opts)
 
 -- Close buffers
-keymap("n", "<S-0>", ":%bd|e#|bd#", opts)
+keymap("n", "<A-ESC>", ":%bd|e#|bd# <CR>", opts)
 
 -- Move text up and down
 keymap("n", "<A-j>", "<Esc>:m .+1<CR>==gi", opts)
