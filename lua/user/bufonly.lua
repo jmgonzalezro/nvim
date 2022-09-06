@@ -28,3 +28,26 @@ local function display(del, mod, term)
     { warn2, "DiagnosticWarn" },
   }, false, {})
 end
+
+M.bufonly = function()
+  local buflist = vim.api.nvim_list_bufs()
+  local sol = vim.api.nvim_get_current_buf()
+  local del, mod, term = 0, 0, 0
+  for _, buf in ipairs(buflist) do
+    if vim.api.nvim_buf_is_valid(buf) then
+      if buf ~= sol and vim.fn.buflisted(buf) == 1 then
+        if vim.bo[buf].buftype == "terminal" then
+          term = term + 1
+        elseif vim.bo[buf].modified == true then
+          mod = mod + 1
+        else
+          vim.api.nvim_buf_delete(buf, {})
+          del = del + 1
+        end
+      end
+    end
+  end
+  display(del, mod, term)
+end
+
+return M
