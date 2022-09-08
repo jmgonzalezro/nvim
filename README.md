@@ -53,8 +53,10 @@ The main function of this IDE is to use space as function trigger. But it works 
     
 ## Used hotkeys.
 Lead key: space
+
 Escape: (press fast)j+k
 
 ## Used fonts.
 Powerline.
+
 Material fonts.
