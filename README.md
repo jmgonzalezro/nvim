@@ -6,8 +6,8 @@ The final purpose is configure the whole neovim IDE with lua. There are some rec
 You can install all the packages and modules inside this NeoVim distribution by just saving the /lua/user/plugins.lua file while openning it from neovim.
 
 Lead key is space. Whenever you press space a menu will popup showing different hotkeys and it's function. If the function has a '+', this means that a submenu will show for that function. Examples:
-- <SPACE-a>: You'll see Alpha starting menu.
-- <SPACE-g>: You'll enter in the Git menu. Pressing d (or the whole sequence, <SPACE-g-d>) will show the git-diff for that buffer.
+- SPACE-a: You'll see Alpha starting menu.
+- SPACE-g: You'll enter in the Git menu. Pressing d (or the whole sequence, <SPACE-g-d>) will show the git-diff for that buffer.
 
 ## Used pluggins.
 The main function of this IDE is to use space as function trigger. But it works as an independent IDE with lot of functionalities:
