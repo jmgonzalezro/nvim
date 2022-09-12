@@ -4,9 +4,7 @@ if not status_ok then
 end
 
 cutlass.setup {
-  {
-    cut_key = nil,
-    override_del = nil,
-    exclude = {},
-  },
+  cut_key = 'x',
+  override_del = nil,
+  exclude = {},
 }
