@@ -26,3 +26,4 @@ require "user.spectre"
 require "user.treesitter-context"
 
 vim.wo.colorcolumn='80'
+
