@@ -20,7 +20,7 @@ require "user.alpha"
 require "user.whichkey"
 require "user.autocommands"
 require "user.mini"
-require "user.transparent"
+--[[ require "user.transparent" ]]
 require "user.cutlass"
 require "user.spectre"
 require "user.treesitter-context"
