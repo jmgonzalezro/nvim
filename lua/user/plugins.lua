@@ -65,7 +65,7 @@ return packer.startup(function(use)
   use "lunarvim/colorschemes" -- A bunch of colorschemes you can try out
   use "lunarvim/darkplus.nvim"
   use "morhetz/gruvbox"
-  use "sainnhe/gruvbox-material"
+  use "EdenEast/nightfox.nvim"
   use "folke/tokyonight.nvim"
   -- cmp plugins
   use "hrsh7th/nvim-cmp" -- The completion plugin
@@ -104,7 +104,7 @@ return packer.startup(function(use)
 
   -- Whichkey
   use "folke/which-key.nvim"
-  
+
   -- Wakatime
   use 'wakatime/vim-wakatime'
 
