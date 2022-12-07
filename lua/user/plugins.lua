@@ -52,7 +52,7 @@ return packer.startup(function(use)
   use "moll/vim-bbye"
   use "nvim-lualine/lualine.nvim"
   use {"akinsho/toggleterm.nvim", tag = 'v1.*', config = function()
-    require("toggleterm").setup()
+  require("toggleterm").setup()
   end}
   use "ahmedkhalf/project.nvim"
   use 'lewis6991/impatient.nvim'
@@ -60,14 +60,14 @@ return packer.startup(function(use)
   use "antoinemadec/FixCursorHold.nvim" -- This is needed to fix lsp doc highlight
   use "Guzzii/python-syntax"
   use 'goolord/alpha-nvim'
-
-  -- Colorschemes
+ 
+-- Colorschemes
   use "lunarvim/colorschemes" -- A bunch of colorschemes you can try out
   use "lunarvim/darkplus.nvim"
   use "morhetz/gruvbox"
   use "EdenEast/nightfox.nvim"
   use "folke/tokyonight.nvim"
-  -- cmp plugins
+-- cmp plugins
   use "hrsh7th/nvim-cmp" -- The completion plugin
   use "hrsh7th/cmp-buffer" -- buffer completions
   use "hrsh7th/cmp-path" -- path completions
@@ -75,74 +75,74 @@ return packer.startup(function(use)
   use "saadparwaiz1/cmp_luasnip" -- snippet completions
   use "hrsh7th/cmp-nvim-lsp"
 
-  -- snippets
-  use "L3MON4D3/LuaSnip" --snippet engine
-  use "rafamadriz/friendly-snippets" -- a bunch of snippets to use
+-- snippets
+use "L3MON4D3/LuaSnip" --snippet engine
+use "rafamadriz/friendly-snippets" -- a bunch of snippets to use
 
-  -- LSP
-  use "neovim/nvim-lspconfig" -- enable LSP
-  use "williamboman/nvim-lsp-installer" -- simple to use language server installer
-  use "tamago324/nlsp-settings.nvim" -- language server settings defined in json for
-  use "jose-elias-alvarez/null-ls.nvim"
+-- LSP
+use "neovim/nvim-lspconfig" -- enable LSP
+use "williamboman/nvim-lsp-installer" -- simple to use language server installer
+use "tamago324/nlsp-settings.nvim" -- language server settings defined in json for
+use "jose-elias-alvarez/null-ls.nvim"
 
-  -- Telescope
-  use {
-  'nvim-telescope/telescope.nvim',
-  requires = { {'nvim-lua/plenary.nvim'} }
- }
+-- Telescope
+use {
+'nvim-telescope/telescope.nvim',
+requires = { {'nvim-lua/plenary.nvim'} }
+}
 
-  -- Treesitter
-  use {
-    "nvim-treesitter/nvim-treesitter",
-    run = ":TSUpdate",
-  }
-  use 'JoosepAlviste/nvim-ts-context-commentstring'
-  use 'nvim-treesitter/nvim-treesitter-context'
+-- Treesitter
+use {
+"nvim-treesitter/nvim-treesitter",
+run = ":TSUpdate",
+}
+use 'JoosepAlviste/nvim-ts-context-commentstring'
+use 'nvim-treesitter/nvim-treesitter-context'
 
-  -- Git
-  use "lewis6991/gitsigns.nvim"
+-- Git
+use "lewis6991/gitsigns.nvim"
 
-  -- Whichkey
-  use "folke/which-key.nvim"
+-- Whichkey
+use "folke/which-key.nvim"
 
-  -- Wakatime
-  use 'wakatime/vim-wakatime'
+-- Wakatime
+-- use 'wakatime/vim-wakatime'
 
-  -- Mini
-  use "echasnovski/mini.nvim"
+-- Mini
+use "echasnovski/mini.nvim"
 
-  -- Transparent
-  use "xiyaowong/nvim-transparent"
+-- Transparent
+use "xiyaowong/nvim-transparent"
 
-  -- Cutlass
-  -- deletes or changes text without yanking it
-  use "gbprod/cutlass.nvim"
+-- Cutlass
+-- deletes or changes text without yanking it
+use "gbprod/cutlass.nvim"
 
-  -- Spectre
-  use "windwp/nvim-spectre"
+-- Spectre
+use "windwp/nvim-spectre"
 
-  -- NeoDim
-  use {
-    "zbirenbaum/neodim",
-    config = function ()
-      require("neodim").setup({
-        alpha = 0.75,
-        blend_color = "#000000",
-        update_in_insert = {
-          enable = true,
-          delay = 100,
-        },
-        hide = {
-          virtual_text = true,
-          signs = true,
-          underline = true,
-        }
-      })
-    end
-  }
+-- NeoDim
+use {
+"zbirenbaum/neodim",
+config = function ()
+require("neodim").setup({
+alpha = 0.75,
+blend_color = "#000000",
+update_in_insert = {
+enable = true,
+delay = 100,
+},
+hide = {
+virtual_text = true,
+signs = true,
+underline = true,
+}
+})
+end
+}
 
-  -- Vim be good
-  use 'ThePrimeagen/vim-be-good'
+-- Vim be good
+use 'ThePrimeagen/vim-be-good'
 
 
   -- Automatically set up your configuration after cloning packer.nvim
