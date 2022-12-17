@@ -52,7 +52,7 @@ keymap("n", "<A-k>", "<Esc>:m .-2<CR>==gi", opts)
 keymap("n", "<A-CR>", ":TermExec cmd='python3 %' size=10 direction=horizontal <CR>", opts)
 
 -- Replace while typing
-keymap("n", "<leader>rR", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>", { noremap = false, silent = false })
+keymap("n", "<leader>rR", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>", { noremap = false })
 
 -- Better search movement
 keymap("n", "n", "nzzzv", opts)
