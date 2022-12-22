@@ -138,9 +138,11 @@ return packer.startup(function(use)
   end
   }
 
--- Vim be good
+  -- Vim be good
   use 'ThePrimeagen/vim-be-good'
 
+  -- UndoTree
+  use 'mbbill/undotree'
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins

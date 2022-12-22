@@ -177,6 +177,7 @@ local mappings = {
     R = { "Replace All words under cursor" },
     w = { "<cmd>lua require('spectre').open_visual({select_word=true})<cr>", "Replace Word" },
     f = { "<cmd>lua require('spectre').open_file_search()<cr>", "Replace Buffer" },
+    u = { "<cmd>UndotreeToggle<cr>", "UndoTree Toggle"}
   },
   s = {
     name = "Search",
