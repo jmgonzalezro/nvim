@@ -175,7 +175,7 @@ _G.packer_plugins = {
     url = "https://github.com/echasnovski/mini.nvim"
   },
   neodim = {
-    config = { "\27LJ\2\n¸\1\0\0\4\0\b\0\v6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0005\3\4\0=\3\5\0025\3\6\0=\3\a\2B\0\2\1K\0\1\0\thide\1\0\3\17virtual_text\2\14underline\2\nsigns\2\21update_in_insert\1\0\2\ndelay\3d\venable\2\1\0\2\16blend_color\f#000000\nalpha\4\0€€ ÿ\3\nsetup\vneodim\frequire\0" },
+    config = { "\27LJ\2\n¸\1\0\0\4\0\b\0\v6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0005\3\4\0=\3\5\0025\3\6\0=\3\a\2B\0\2\1K\0\1\0\thide\1\0\3\14underline\2\nsigns\2\17virtual_text\2\21update_in_insert\1\0\2\ndelay\3d\venable\2\1\0\2\16blend_color\f#000000\nalpha\4\0€€ ÿ\3\nsetup\vneodim\frequire\0" },
     loaded = true,
     path = "/home/jmgonzalezro/.local/share/nvim/site/pack/packer/start/neodim",
     url = "https://github.com/zbirenbaum/neodim"
@@ -204,6 +204,26 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/jmgonzalezro/.local/share/nvim/site/pack/packer/start/nvim-cmp",
     url = "https://github.com/hrsh7th/nvim-cmp"
+  },
+  ["nvim-dap"] = {
+    loaded = true,
+    path = "/home/jmgonzalezro/.local/share/nvim/site/pack/packer/start/nvim-dap",
+    url = "https://github.com/mfussenegger/nvim-dap"
+  },
+  ["nvim-dap-go"] = {
+    loaded = true,
+    path = "/home/jmgonzalezro/.local/share/nvim/site/pack/packer/start/nvim-dap-go",
+    url = "https://github.com/leoluz/nvim-dap-go"
+  },
+  ["nvim-dap-ui"] = {
+    loaded = true,
+    path = "/home/jmgonzalezro/.local/share/nvim/site/pack/packer/start/nvim-dap-ui",
+    url = "https://github.com/rcarriga/nvim-dap-ui"
+  },
+  ["nvim-dap-virtual-text"] = {
+    loaded = true,
+    path = "/home/jmgonzalezro/.local/share/nvim/site/pack/packer/start/nvim-dap-virtual-text",
+    url = "https://github.com/theHamsta/nvim-dap-virtual-text"
   },
   ["nvim-lsp-installer"] = {
     loaded = true,
@@ -275,6 +295,11 @@ _G.packer_plugins = {
     path = "/home/jmgonzalezro/.local/share/nvim/site/pack/packer/start/python-syntax",
     url = "https://github.com/Guzzii/python-syntax"
   },
+  ["telescope-dap.nvim"] = {
+    loaded = true,
+    path = "/home/jmgonzalezro/.local/share/nvim/site/pack/packer/start/telescope-dap.nvim",
+    url = "https://github.com/nvim-telescope/telescope-dap.nvim"
+  },
   ["telescope.nvim"] = {
     loaded = true,
     path = "/home/jmgonzalezro/.local/share/nvim/site/pack/packer/start/telescope.nvim",
@@ -315,7 +340,7 @@ _G.packer_plugins = {
 time([[Defining packer_plugins]], false)
 -- Config for: neodim
 time([[Config for neodim]], true)
-try_loadstring("\27LJ\2\n¸\1\0\0\4\0\b\0\v6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0005\3\4\0=\3\5\0025\3\6\0=\3\a\2B\0\2\1K\0\1\0\thide\1\0\3\17virtual_text\2\14underline\2\nsigns\2\21update_in_insert\1\0\2\ndelay\3d\venable\2\1\0\2\16blend_color\f#000000\nalpha\4\0€€ ÿ\3\nsetup\vneodim\frequire\0", "config", "neodim")
+try_loadstring("\27LJ\2\n¸\1\0\0\4\0\b\0\v6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0005\3\4\0=\3\5\0025\3\6\0=\3\a\2B\0\2\1K\0\1\0\thide\1\0\3\14underline\2\nsigns\2\17virtual_text\2\21update_in_insert\1\0\2\ndelay\3d\venable\2\1\0\2\16blend_color\f#000000\nalpha\4\0€€ ÿ\3\nsetup\vneodim\frequire\0", "config", "neodim")
 time([[Config for neodim]], false)
 
 _G._packer.inside_compile = false

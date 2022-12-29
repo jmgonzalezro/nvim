@@ -90,6 +90,13 @@ return packer.startup(function(use)
   requires = { {'nvim-lua/plenary.nvim'} }
   }
 
+-- Debugging
+  use "mfussenegger/nvim-dap"
+  use "leoluz/nvim-dap-go"
+  use 'rcarriga/nvim-dap-ui'
+  use 'theHamsta/nvim-dap-virtual-text'
+  use 'nvim-telescope/telescope-dap.nvim'
+
 -- Treesitter
   use {
   "nvim-treesitter/nvim-treesitter",
