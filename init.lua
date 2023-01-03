@@ -10,8 +10,6 @@ require "user.treesitter"
 require "user.lsp"
 require "user.neodev"
 require "user.fidget"
-
-
 require "user.colorscheme"
 require "user.autopairs"
 require "user.nvim-tree"
@@ -29,6 +27,3 @@ require "user.spectre"
 require "user.treesitter-context"
 
 vim.wo.colorcolumn='80'
-
-
-vim.cmd [[colorscheme nightfox]]
