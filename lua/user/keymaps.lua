@@ -19,8 +19,8 @@ keymap('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 -- Diagnostic keymaps
 keymap('n', '[d', vim.diagnostic.goto_prev)
 keymap('n', ']d', vim.diagnostic.goto_next)
-keymap('n', '<leader>e', vim.diagnostic.open_float)
-keymap('n', '<leader>q', vim.diagnostic.setloclist)
+keymap('n', 'gl', vim.diagnostic.open_float)
+-- keymap('n', '<leader>q', vim.diagnostic.setloclist)
 
 -- Normal --
 -- Better window navigaation
