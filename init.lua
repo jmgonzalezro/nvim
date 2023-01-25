@@ -26,5 +26,6 @@ require "user.cutlass"
 require "user.spectre"
 require "user.treesitter-context"
 require ("user.lsp_handlers").setup()
+require "user.chatgpt"
 
 vim.wo.colorcolumn='80'
