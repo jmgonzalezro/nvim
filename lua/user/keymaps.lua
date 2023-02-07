@@ -51,7 +51,7 @@ keymap("n", "<A-j>", "<Esc>:m .+1<CR>==gi", opts)
 keymap("n", "<A-k>", "<Esc>:m .-2<CR>==gi", opts)
 
 -- Running the current buffer in Python
-keymap("n", "<A-CR>", ":TermExec cmd='python3 %' size=10 direction=horizontal <CR>", opts)
+keymap("n", "<A-CR>", ":TermExec cmd='python %' size=10 direction=horizontal <CR>", opts)
 
 -- Replace while typing
 keymap("n", "<leader>rR", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>", { noremap = false })
