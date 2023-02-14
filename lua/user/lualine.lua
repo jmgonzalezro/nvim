@@ -74,7 +74,7 @@ local function get_venv()
 		local params = split(venv, '/')
 		return '(env:'..params[table.getn(params)]..')'
 	else
-		return ''
+		return ' NO VENV'
 	end
 end
 -- cool function for progress
@@ -113,7 +113,7 @@ lualine.setup({
 		lualine_a = {},
 		lualine_b = {},
 		lualine_c = { "encoding", "fileformat", "filetype" },
-		lualine_x = { diff, spaces, 'filetype', 'fileformat'},
+		lualine_x = { diff, 'filetype', 'fileformat'},
 		lualine_y = {},
 		lualine_z = {},
 	},
