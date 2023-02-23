@@ -57,16 +57,21 @@ local branch = {
 	icon = "",
 }
 
-local location = {
-	"location",
-	padding = 0,
-}
+local function split(input, delimiter)
+    local arr = {}
+    string.gsub(input, '[^' .. delimiter ..']+', function(w) table.insert(arr, w) end)
+    return arr
+end
 
-local swenv = {
-    "swenv",
-    icons_enabled = true,
-	icon = "",
-}
+local function get_venv()
+local venv = vim.env.VIRTUAL_ENV
+    if venv then
+	local params = split(venv, '/')
+	return '(env:'..params[table.getn(params)]..')'
+    else
+	return ''
+    end
+end
 
 -- cool function for progress
 local progress = function()
@@ -95,10 +100,10 @@ lualine.setup({
 	sections = {
 		lualine_a = { mode},
 		lualine_b = { branch},
-        lualine_c = {{"filename", path = 1}},
-        lualine_x = {"fileformat", "filetype"},
-        lualine_y = { diagnostics },
-		lualine_z = { progress },
+		lualine_c = {{"filename", path = 1}},
+		lualine_x = {"fileformat", get_venv, "filetype"},
+		lualine_y = { diagnostics },
+			lualine_z = { progress },
 	},
 	inactive_sections = {
 		lualine_a = {},
