@@ -63,16 +63,21 @@ local function split(input, delimiter)
     return arr
 end
 
-local function get_venv()
-local venv = vim.env.VIRTUAL_ENV
-    if venv then
-	local params = split(venv, '/')
-	return '(env:'..params[table.getn(params)]..')'
-    else
-	return ''
-    end
+local function split(input, delimiter)
+    local arr = {}
+    string.gsub(input, '[^' .. delimiter ..']+', function(w) table.insert(arr, w) end)
+    return arr
 end
 
+local function get_venv()
+	local venv = vim.env.VIRTUAL_ENV
+	if venv then
+		local params = split(venv, '/')
+		return '(env:'..params[table.getn(params)]..')'
+	else
+		return ' NO VENV'
+	end
+end
 -- cool function for progress
 local progress = function()
 	local current_line = vim.fn.line(".")
@@ -100,16 +105,16 @@ lualine.setup({
 	sections = {
 		lualine_a = { mode},
 		lualine_b = { branch},
-		lualine_c = {{"filename", path = 1}},
-		lualine_x = {"fileformat", get_venv, "filetype"},
-		lualine_y = { diagnostics },
-			lualine_z = { progress },
+        lualine_c = {{"filename", path = 1}},
+        lualine_x = {get_venv, "fileformat", "filetype"},
+        lualine_y = { diagnostics },
+		lualine_z = { progress },
 	},
 	inactive_sections = {
 		lualine_a = {},
 		lualine_b = {},
 		lualine_c = { "encoding", "fileformat", "filetype" },
-		lualine_x = { diff, spaces, 'filetype', 'fileformat'},
+		lualine_x = { diff, 'filetype', 'fileformat'},
 		lualine_y = {},
 		lualine_z = {},
 	},
