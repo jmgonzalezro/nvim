@@ -57,11 +57,10 @@ local branch = {
 	icon = "",
 }
 
-local function split(input, delimiter)
-    local arr = {}
-    string.gsub(input, '[^' .. delimiter ..']+', function(w) table.insert(arr, w) end)
-    return arr
-end
+local location = {
+	"location",
+	padding = 0,
+}
 
 local function split(input, delimiter)
     local arr = {}
