@@ -74,6 +74,11 @@ end
 time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
+  ["ChatGPT.nvim"] = {
+    loaded = true,
+    path = "/home/jmgonzalezro/.local/share/nvim/site/pack/packer/start/ChatGPT.nvim",
+    url = "https://github.com/jackMort/ChatGPT.nvim"
+  },
   ["Comment.nvim"] = {
     loaded = true,
     path = "/home/jmgonzalezro/.local/share/nvim/site/pack/packer/start/Comment.nvim",
@@ -139,6 +144,11 @@ _G.packer_plugins = {
     path = "/home/jmgonzalezro/.local/share/nvim/site/pack/packer/start/darkplus.nvim",
     url = "https://github.com/lunarvim/darkplus.nvim"
   },
+  ["fidget.nvim"] = {
+    loaded = true,
+    path = "/home/jmgonzalezro/.local/share/nvim/site/pack/packer/start/fidget.nvim",
+    url = "https://github.com/j-hui/fidget.nvim"
+  },
   ["friendly-snippets"] = {
     loaded = true,
     path = "/home/jmgonzalezro/.local/share/nvim/site/pack/packer/start/friendly-snippets",
@@ -169,13 +179,28 @@ _G.packer_plugins = {
     path = "/home/jmgonzalezro/.local/share/nvim/site/pack/packer/start/lualine.nvim",
     url = "https://github.com/nvim-lualine/lualine.nvim"
   },
+  ["mason-lspconfig.nvim"] = {
+    loaded = true,
+    path = "/home/jmgonzalezro/.local/share/nvim/site/pack/packer/start/mason-lspconfig.nvim",
+    url = "https://github.com/williamboman/mason-lspconfig.nvim"
+  },
+  ["mason.nvim"] = {
+    loaded = true,
+    path = "/home/jmgonzalezro/.local/share/nvim/site/pack/packer/start/mason.nvim",
+    url = "https://github.com/williamboman/mason.nvim"
+  },
   ["mini.nvim"] = {
     loaded = true,
     path = "/home/jmgonzalezro/.local/share/nvim/site/pack/packer/start/mini.nvim",
     url = "https://github.com/echasnovski/mini.nvim"
   },
+  ["neodev.nvim"] = {
+    loaded = true,
+    path = "/home/jmgonzalezro/.local/share/nvim/site/pack/packer/start/neodev.nvim",
+    url = "https://github.com/folke/neodev.nvim"
+  },
   neodim = {
-    config = { "\27LJ\2\n¸\1\0\0\4\0\b\0\v6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0005\3\4\0=\3\5\0025\3\6\0=\3\a\2B\0\2\1K\0\1\0\thide\1\0\3\14underline\2\nsigns\2\17virtual_text\2\21update_in_insert\1\0\2\ndelay\3d\venable\2\1\0\2\16blend_color\f#000000\nalpha\4\0€€ ÿ\3\nsetup\vneodim\frequire\0" },
+    config = { "\27LJ\2\n¸\1\0\0\4\0\b\0\v6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0005\3\4\0=\3\5\0025\3\6\0=\3\a\2B\0\2\1K\0\1\0\thide\1\0\3\14underline\2\nsigns\2\17virtual_text\2\21update_in_insert\1\0\2\venable\2\ndelay\3d\1\0\2\16blend_color\f#000000\nalpha\4\0€€ ÿ\3\nsetup\vneodim\frequire\0" },
     loaded = true,
     path = "/home/jmgonzalezro/.local/share/nvim/site/pack/packer/start/neodim",
     url = "https://github.com/zbirenbaum/neodim"
@@ -189,6 +214,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/jmgonzalezro/.local/share/nvim/site/pack/packer/start/nlsp-settings.nvim",
     url = "https://github.com/tamago324/nlsp-settings.nvim"
+  },
+  ["nui.nvim"] = {
+    loaded = true,
+    path = "/home/jmgonzalezro/.local/share/nvim/site/pack/packer/start/nui.nvim",
+    url = "https://github.com/MunifTanjim/nui.nvim"
   },
   ["null-ls.nvim"] = {
     loaded = true,
@@ -260,6 +290,13 @@ _G.packer_plugins = {
     path = "/home/jmgonzalezro/.local/share/nvim/site/pack/packer/start/nvim-treesitter-context",
     url = "https://github.com/nvim-treesitter/nvim-treesitter-context"
   },
+  ["nvim-treesitter-textobjects"] = {
+    load_after = {},
+    loaded = true,
+    needs_bufread = false,
+    path = "/home/jmgonzalezro/.local/share/nvim/site/pack/packer/opt/nvim-treesitter-textobjects",
+    url = "https://github.com/nvim-treesitter/nvim-treesitter-textobjects"
+  },
   ["nvim-ts-context-commentstring"] = {
     loaded = true,
     path = "/home/jmgonzalezro/.local/share/nvim/site/pack/packer/start/nvim-ts-context-commentstring",
@@ -269,6 +306,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/jmgonzalezro/.local/share/nvim/site/pack/packer/start/nvim-web-devicons",
     url = "https://github.com/kyazdani42/nvim-web-devicons"
+  },
+  ["onedark.nvim"] = {
+    loaded = true,
+    path = "/home/jmgonzalezro/.local/share/nvim/site/pack/packer/start/onedark.nvim",
+    url = "https://github.com/navarasu/onedark.nvim"
   },
   ["packer.nvim"] = {
     loaded = true,
@@ -300,6 +342,14 @@ _G.packer_plugins = {
     path = "/home/jmgonzalezro/.local/share/nvim/site/pack/packer/start/telescope-dap.nvim",
     url = "https://github.com/nvim-telescope/telescope-dap.nvim"
   },
+  ["telescope-fzf-native.nvim"] = {
+    cond = { true },
+    loaded = false,
+    needs_bufread = false,
+    only_cond = true,
+    path = "/home/jmgonzalezro/.local/share/nvim/site/pack/packer/opt/telescope-fzf-native.nvim",
+    url = "https://github.com/nvim-telescope/telescope-fzf-native.nvim"
+  },
   ["telescope.nvim"] = {
     loaded = true,
     path = "/home/jmgonzalezro/.local/share/nvim/site/pack/packer/start/telescope.nvim",
@@ -330,6 +380,21 @@ _G.packer_plugins = {
     path = "/home/jmgonzalezro/.local/share/nvim/site/pack/packer/start/vim-be-good",
     url = "https://github.com/ThePrimeagen/vim-be-good"
   },
+  ["vim-fugitive"] = {
+    loaded = true,
+    path = "/home/jmgonzalezro/.local/share/nvim/site/pack/packer/start/vim-fugitive",
+    url = "https://github.com/tpope/vim-fugitive"
+  },
+  ["vim-rhubarb"] = {
+    loaded = true,
+    path = "/home/jmgonzalezro/.local/share/nvim/site/pack/packer/start/vim-rhubarb",
+    url = "https://github.com/tpope/vim-rhubarb"
+  },
+  ["vim-sleuth"] = {
+    loaded = true,
+    path = "/home/jmgonzalezro/.local/share/nvim/site/pack/packer/start/vim-sleuth",
+    url = "https://github.com/tpope/vim-sleuth"
+  },
   ["which-key.nvim"] = {
     loaded = true,
     path = "/home/jmgonzalezro/.local/share/nvim/site/pack/packer/start/which-key.nvim",
@@ -340,8 +405,17 @@ _G.packer_plugins = {
 time([[Defining packer_plugins]], false)
 -- Config for: neodim
 time([[Config for neodim]], true)
-try_loadstring("\27LJ\2\n¸\1\0\0\4\0\b\0\v6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0005\3\4\0=\3\5\0025\3\6\0=\3\a\2B\0\2\1K\0\1\0\thide\1\0\3\14underline\2\nsigns\2\17virtual_text\2\21update_in_insert\1\0\2\ndelay\3d\venable\2\1\0\2\16blend_color\f#000000\nalpha\4\0€€ ÿ\3\nsetup\vneodim\frequire\0", "config", "neodim")
+try_loadstring("\27LJ\2\n¸\1\0\0\4\0\b\0\v6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0005\3\4\0=\3\5\0025\3\6\0=\3\a\2B\0\2\1K\0\1\0\thide\1\0\3\14underline\2\nsigns\2\17virtual_text\2\21update_in_insert\1\0\2\venable\2\ndelay\3d\1\0\2\16blend_color\f#000000\nalpha\4\0€€ ÿ\3\nsetup\vneodim\frequire\0", "config", "neodim")
 time([[Config for neodim]], false)
+-- Conditional loads
+time([[Conditional loading of telescope-fzf-native.nvim]], true)
+  require("packer.load")({"telescope-fzf-native.nvim"}, {}, _G.packer_plugins)
+time([[Conditional loading of telescope-fzf-native.nvim]], false)
+-- Load plugins in order defined by `after`
+time([[Sequenced loading]], true)
+vim.cmd [[ packadd nvim-treesitter ]]
+vim.cmd [[ packadd nvim-treesitter-textobjects ]]
+time([[Sequenced loading]], false)
 
 _G._packer.inside_compile = false
 if _G._packer.needs_bufread == true then

@@ -25,8 +25,8 @@ local options = {
   shiftwidth = 4,                          -- the number of spaces inserted for each indentation
   tabstop = 4,                             -- insert 2 spaces for a tab
   cursorline = true,                       -- highlight the current line
-  number = false,                           -- set numbered lines
-  relativenumber = false,                   -- set relative numbered lines
+  number = true,                           -- set numbered lines
+  relativenumber = true,                   -- set relative numbered lines
   numberwidth = 1,                         -- set number column width to 2 {default 4}
   signcolumn = "yes",                      -- always show the sign column, otherwise it would shift the text each time
   wrap = false,                            -- display lines as one long line
@@ -47,3 +47,16 @@ end
 vim.cmd "set whichwrap+=<,>,[,],h,l"
 vim.cmd [[set iskeyword+=-]]
 vim.cmd [[set formatoptions-=cro]] -- TODO: this doesn't seem to work
+
+
+-- [[ Highlight on yank ]]
+-- See `:help vim.highlight.on_yank()`
+local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
+vim.api.nvim_create_autocmd('TextYankPost', {
+  callback = function()
+    vim.highlight.on_yank()
+  end,
+  group = highlight_group,
+  pattern = '*',
+})
+
