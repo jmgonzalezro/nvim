@@ -86,7 +86,7 @@ require('packer').startup(function(use)
 -- Colorschemes
   use "lunarvim/colorschemes" -- A bunch of colorschemes you can try out
   use "lunarvim/darkplus.nvim"
-  use "morhetz/gruvbox"
+  use "ellisonleao/gruvbox.nvim"
   use "EdenEast/nightfox.nvim"
   use "folke/tokyonight.nvim"
   use 'navarasu/onedark.nvim' -- Theme inspired by Atom
