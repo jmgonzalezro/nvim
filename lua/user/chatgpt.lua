@@ -4,7 +4,7 @@ if not status_ok then
 end
 
 chatgpt.setup {
-  welcome_message = WELCOME_MESSAGE, -- set to "" if you don't like the fancy godot robot
+  welcome_message = "", -- set to "" if you don't like the fancy godot robot
   loading_text = "loading",
   question_sign = "", -- you can use emoji if you want e.g. 🙂
   answer_sign = "ﮧ", -- 🤖
@@ -48,7 +48,7 @@ chatgpt.setup {
     },
   },
   openai_params = {
-    model = "text-davinci-003",
+    model = "gpt-3.5-turbo",
     frequency_penalty = 0,
     presence_penalty = 0,
     max_tokens = 300,
@@ -70,5 +70,9 @@ chatgpt.setup {
     toggle_settings = "<C-o>",
     new_session = "<C-n>",
     cycle_windows = "<Tab>",
+    -- in the Sessions pane
+    select_session = "<Space>",
+    rename_session = "r",
+    delete_session = "d",
   },
 }
