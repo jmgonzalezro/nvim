@@ -1,2 +1,2 @@
-require 'user.plugins'
-require 'user.options'
+require("user.lazy")
+require("user.options")
