@@ -1,2 +1,2 @@
-require("user.lazy")
-require("user.options")
+require("config.lazy")
+require("config.options")
