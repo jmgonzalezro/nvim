@@ -1,0 +1,2 @@
+-- disable trouble example
+-- { 'folke/trouble.nvim', enabled = false }
