@@ -59,7 +59,7 @@ map("n", "<leader>`", "<cmd>e #<cr>", { desc = "Switch to Other Buffer" })
 map("n", "<A-ESC>", ":%bd|e#|bd# <CR>")
 
 -- Running the current buffer in Python
-map("n", "<A-CR>", ":TermExec cmd='python %' size=10 direction=horizontal <CR>", opts)
+map("n", "<A-CR>", ":TermExec cmd='python %' size=10 direction=horizontal <CR>")
 
 -- Replace while typing
 map("n", "<leader>rR", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>", { noremap = false })

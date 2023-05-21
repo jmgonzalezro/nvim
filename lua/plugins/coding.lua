@@ -117,7 +117,7 @@ return {
 			mappings = vim.tbl_filter(function(m)
 				return m[1] and #m[1] > 0
 			end, mappings)
-			return vim.list_extend(mappings, keys)
+			return vim.list_extend(mappings, keys, 0, -1)
 		end,
 		opts = {
 			mappings = {
