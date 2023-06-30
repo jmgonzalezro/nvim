@@ -172,3 +172,7 @@ map("t", "<C-h>", "<C-\\><C-N><C-w>h", { silent = true })
 map("t", "<C-j>", "<C-\\><C-N><C-w>j", { silent = true })
 map("t", "<C-k>", "<C-\\><C-N><C-w>k", { silent = true })
 map("t", "<C-l>", "<C-\\><C-N><C-w>l", { silent = true })
+
+-- Cycle through code autocompletion
+map('i', '<Tab>', 'pumvisible()', { silent = true})
+-- map('i', '<Tab>', pumvisible() ? "\<C-n>" : "\<TAB>")
