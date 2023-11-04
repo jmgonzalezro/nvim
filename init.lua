@@ -612,8 +612,6 @@ cmp.setup {
   },
 }
 
-require('mini.surround').setup()
-require('mini.cursorword').setup()
 
 vim.wo.colorcolumn = "80"
 

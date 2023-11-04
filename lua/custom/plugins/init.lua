@@ -4,4 +4,7 @@
 -- See the kickstart.nvim README for more information
 return {
     'echasnovski/mini.cursorword',
+    config = function()
+        require('mini.cursorword').setup {}
+    end,
 }
