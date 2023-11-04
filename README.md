@@ -1,9 +1,9 @@
 # NEOVIM CONFIG
-This Neovim Config is based on Chris@Machine's neovim from scratch.
+Minimal neovim config.
 
-The final purpose is configure the whole neovim IDE with lua. There are some recommended packages to be installed in your PC such as [htop](https://htop.dev) or [lazygit](https://github.com/jesseduffield/lazygit).
+The final purpose is to use neovim as main text editor with minimal configuration. There are some recommended packages to be installed in your PC such as [htop](https://htop.dev) or [lazygit](https://github.com/jesseduffield/lazygit).
 
-You can install all the packages and modules inside this NeoVim distribution by just saving the /lua/user/plugins.lua file while openning it from neovim.
+You can install all the packages and modules inside this NeoVim distribution by just saving the /lua/custom/plugins/plugin.lua file while openning it from neovim.
 
 Lead key is space. Whenever you press space a menu will popup showing different hotkeys and it's function. If the function has a '+', this means that a submenu will show for that function. Examples:
 - SPACE-a: You'll see Alpha starting menu.
@@ -12,33 +12,19 @@ Lead key is space. Whenever you press space a menu will popup showing different 
 ## Used pluggins.
 The main function of this IDE is to use space as function trigger. But it works as an independent IDE with lot of functionalities:
     
-*  Alpha: Starting menu
-        
 *  Autopairs: Autoclosing pairs
     
 *  Bufferline: Showing opened buffers at the top of the screen and not saved ones
     
 *  CMP: Coding completion plugin
     
-*  Commen: Easy and language agnostic commenting tool
-    
-*  Cutlass: Overrides the copy on delete
+*  Comment: Easy and language agnostic commenting tool
     
 *  GitSigns: Showing git activity on action column
     
-*  Impatient: Improves starting time for neovim and it's plugins
-    
 *  Indentline: Showing lines per indentation
     
-*  Lualine: Bottom line for useful information
-    
 *  Mini: Compacted plugins for highlighting word under cursor or easy surround
-    
-*  Nvim-Tree: File explorer
-    
-*  Project: Project finder
-    
-*  Spectre: Fzf with rename functions showing all files in relative path
     
 *  Telescope: Fzf, livegrep...
     
