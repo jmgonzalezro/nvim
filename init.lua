@@ -109,7 +109,11 @@ require('lazy').setup({
       end,
     },
   },
-
+  {
+    'windwp/nvim-autopairs',
+    event = "InsertEnter",
+    opts = {} -- this is equalent to setup({}) function
+  },
   -- {
   --   -- Theme inspired by Atom
   --   'navarasu/onedark.nvim',
@@ -236,8 +240,11 @@ vim.o.sidescrolloff = 8
 vim.o.guifont = "monospace:h17" -- the font used in graphical neovim applications
 vim.o.laststatus = 3
 vim.o.foldlevel = 99
+vim.o.foldenable = true
 vim.o.foldmethod = "indent"
--- vim.o.termguicolors = true
+vim.o.foldcolumn = 'auto'
+vim.o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
+vim.o.termguicolors = true
 
 -- [[ Basic Keymaps ]]
 
