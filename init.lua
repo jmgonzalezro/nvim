@@ -110,12 +110,20 @@ require('lazy').setup({
     },
   },
 
+  -- {
+  --   -- Theme inspired by Atom
+  --   'navarasu/onedark.nvim',
+  --   priority = 1000,
+  --   config = function()
+  --     vim.cmd.colorscheme 'onedark'
+  --   end,
+  -- },
   {
     -- Theme inspired by Atom
-    'navarasu/onedark.nvim',
+    'olimorris/onedarkpro.nvim',
     priority = 1000,
     config = function()
-      vim.cmd.colorscheme 'onedark'
+      vim.cmd.colorscheme 'onedark_dark'
     end,
   },
 
@@ -126,7 +134,7 @@ require('lazy').setup({
     opts = {
       options = {
         icons_enabled = false,
-        theme = 'onedark',
+        theme = 'onedark_dark',
         component_separators = '|',
         section_separators = '',
       },
@@ -209,7 +217,6 @@ vim.o.smartindent = true        -- make indenting smarter again
 vim.o.splitbelow = true         -- force all horizontal splits to go below current window
 vim.o.splitright = true         -- force all vertical splits to go to the right of current window
 vim.o.swapfile = false          -- creates a swapfile
-vim.o.termguicolors = true      -- set term gui colors (most terminals support this)
 vim.o.timeoutlen = 150          -- time to wait for a mapped sequence to complete (in milliseconds)
 vim.o.undofile = true           -- enable persistent undo
 vim.o.updatetime = 300          -- faster completion (4000ms default)
@@ -221,6 +228,7 @@ vim.o.cursorline = true         -- highlight the current line
 vim.o.number = true             -- set numbered lines
 vim.o.relativenumber = true     -- set relative numbered lines
 vim.o.numberwidth = 1           -- set number column width to 2 {default 4}
+vim.opt.statuscolumn = "%=%{v:virtnum < 1 ? (v:relnum ? v:relnum : v:lnum < 10 ? v:lnum . '  ' : v:lnum) : ''}%=%s"
 vim.o.signcolumn = "yes"        -- always show the sign column, otherwise it would shift the text each time
 vim.o.wrap = false              -- display lines as one long line
 vim.o.scrolloff = 8             -- is one of my fav
@@ -229,7 +237,7 @@ vim.o.guifont = "monospace:h17" -- the font used in graphical neovim application
 vim.o.laststatus = 3
 vim.o.foldlevel = 99
 vim.o.foldmethod = "indent"
-vim.o.termguicolors = true
+-- vim.o.termguicolors = true
 
 -- [[ Basic Keymaps ]]
 
