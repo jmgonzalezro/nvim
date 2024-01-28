@@ -85,6 +85,8 @@ require('lazy').setup({
       },
       on_attach = function(bufnr)
         vim.keymap.set('n', '<leader>hp', require('gitsigns').preview_hunk, { buffer = bufnr, desc = 'Preview git hunk' })
+        vim.keymap.set('n', '<leader>hn', require('gitsigns').next_hunk,
+          { buffer = bufnr, desc = 'Preview next git hunk' })
 
         -- don't override the built-in and fugitive keymaps
         local gs = package.loaded.gitsigns
@@ -122,15 +124,45 @@ require('lazy').setup({
   --     vim.cmd.colorscheme 'onedark'
   --   end,
   -- },
+  -- {
+  --   -- Theme inspired by Atom
+  --   'olimorris/onedarkpro.nvim',
+  --   priority = 0,
+  --   config = function()
+  --     vim.cmd.colorscheme 'onedark_dark'
+  --   end,
+  -- },
   {
-    -- Theme inspired by Atom
-    'olimorris/onedarkpro.nvim',
+    "ellisonleao/gruvbox.nvim",
     priority = 1000,
+    opts = {
+      terminal_colors = true, -- add neovim terminal colors
+      undercurl = true,
+      underline = true,
+      bold = true,
+      italic = {
+        strings = true,
+        emphasis = true,
+        comments = true,
+        operators = false,
+        folds = true,
+      },
+      strikethrough = true,
+      invert_selection = false,
+      invert_signs = false,
+      invert_tabline = false,
+      invert_intend_guides = false,
+      inverse = true, -- invert background for search, diffs, statuslines and errors
+      contrast = "",  -- can be "hard", "soft" or empty string
+      palette_overrides = {},
+      overrides = {},
+      dim_inactive = true,
+      transparent_mode = true,
+    },
     config = function()
-      vim.cmd.colorscheme 'onedark_dark'
+      vim.cmd.colorscheme 'gruvbox'
     end,
   },
-
   {
     -- Set lualine as statusline
     'nvim-lualine/lualine.nvim',
@@ -138,13 +170,12 @@ require('lazy').setup({
     opts = {
       options = {
         icons_enabled = false,
-        theme = 'onedark_dark',
+        theme = 'gruvbox',
         component_separators = '|',
         section_separators = '',
       },
     },
   },
-
   {
     -- Add indentation guides even on blank lines
     'lukas-reineke/indent-blankline.nvim',
@@ -232,17 +263,18 @@ vim.o.cursorline = true         -- highlight the current line
 vim.o.number = true             -- set numbered lines
 vim.o.relativenumber = true     -- set relative numbered lines
 vim.o.numberwidth = 1           -- set number column width to 2 {default 4}
-vim.opt.statuscolumn = "%=%{v:virtnum < 1 ? (v:relnum ? v:relnum : v:lnum < 10 ? v:lnum . '  ' : v:lnum) : ''}%=%s"
-vim.o.signcolumn = "yes"        -- always show the sign column, otherwise it would shift the text each time
-vim.o.wrap = false              -- display lines as one long line
-vim.o.scrolloff = 8             -- is one of my fav
+vim.opt.statuscolumn = "%=%{v:virtnum < 1 ? (v:relnum ? v:relnum : v:lnum < 10 ? v:lnum . '' : v:lnum) : ''}%=%s"
+vim.o.signcolumn = "yes"
+vim.api.nvim_set_hl(0, 'SignColumn', { clear }) -- sign column without background
+vim.o.wrap = false                              -- display lines as one long line
+vim.o.scrolloff = 8                             -- is one of my fav
 vim.o.sidescrolloff = 8
-vim.o.guifont = "monospace:h17" -- the font used in graphical neovim applications
+vim.o.guifont = "monospace:h17"                 -- the font used in graphical neovim applications
 vim.o.laststatus = 3
 vim.o.foldlevel = 99
 vim.o.foldenable = true
 vim.o.foldmethod = "indent"
-vim.o.foldcolumn = 'auto'
+vim.o.foldcolumn = '0'
 vim.o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
 vim.o.termguicolors = true
 
@@ -377,7 +409,7 @@ end, 0)
 -- Diagnostic keymaps
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous diagnostic message' })
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next diagnostic message' })
-vim.keymap.set('n', '<leader>l', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })
+vim.keymap.set('n', '<leader>hl', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
 
 -- General Keyamps
@@ -464,13 +496,19 @@ vim.keymap.set("v", "p", '"_dP')
 -- lazy
 vim.keymap.set("n", "<leader>l", "<cmd>:Lazy<cr>", { desc = "Lazy" })
 
+-- Mason
+vim.keymap.set("n", "<leader>m", "<cmd>:Mason<cr>", { desc = "Mason" })
+
+-- Format
+vim.keymap.set("n", "<leader>ff", "<cmd>:Format<cr>", { desc = "Format file" })
+
 -- new file
 vim.keymap.set("n", "<leader>fn", "<cmd>enew<cr>", { desc = "New File" })
 vim.keymap.set("n", "<leader>xl", "<cmd>lopen<cr>", { desc = "Location List" })
 vim.keymap.set("n", "<leader>xq", "<cmd>copen<cr>", { desc = "Quickfix List" })
 
 -- Mini Files
-vim.keymap.set("n", "<leader>e", "<cmd>:lua MiniFiles.open()<cr>", { desc = "[E]xplore files" })
+vim.keymap.set("n", "<leader>e", "<cmd>NvimTreeToggle<cr>", { desc = "[E]xplore files" })
 -- [[ Configure LSP ]]
 --  This function gets run when an LSP connects to a particular buffer.
 local on_attach = function(_, bufnr)
@@ -631,7 +669,6 @@ cmp.setup {
 
 
 vim.wo.colorcolumn = "80"
-require('mini.files').setup()
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
