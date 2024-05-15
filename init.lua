@@ -114,6 +114,18 @@ require('lazy').setup({
   --   end,
   -- },
   {
+    "neanias/everforest-nvim",
+    version = false,
+    lazy = false,
+    priority = 1000, -- make sure to load this before all the other start plugins
+    -- Optional; default configuration will be used if setup isn't called.
+    config = function()
+      require("everforest").setup({
+        -- Your config here
+      })
+    end
+  },
+  {
     "ellisonleao/gruvbox.nvim",
     priority = 1000,
     opts = {
@@ -140,10 +152,8 @@ require('lazy').setup({
       dim_inactive = true,
       transparent_mode = true,
     },
-    config = function()
-      vim.cmd.colorscheme 'gruvbox'
-    end,
   },
+  -- config =   },
   {
     'lukas-reineke/indent-blankline.nvim',
     -- See `:help ibl`
@@ -184,6 +194,12 @@ require('lazy').setup({
   { import = 'custom.plugins' },
 }, {})
 
+-- Select default colorscheme
+vim.cmd.colorscheme 'everforest'
+
+require("lazy").setup({
+})
+
 -- [[ Setting options ]]
 -- See `:help vim.o`
 
@@ -210,10 +226,10 @@ vim.o.expandtab = true          -- convert tabs to spaces
 vim.o.shiftwidth = 4            -- the number of spaces inserted for each indentation
 vim.o.tabstop = 4               -- insert 2 spaces for a tab
 vim.o.cursorline = true         -- highlight the current line
-vim.o.number = true             -- set numbered lines
-vim.o.relativenumber = true     -- set relative numbered lines
+vim.o.number = false            -- set numbered lines
+vim.o.relativenumber = false    -- set relative numbered lines
 vim.o.numberwidth = 1           -- set number column width to 2 {default 4}
-vim.opt.statuscolumn = "%=%{v:virtnum < 1 ? (v:relnum ? v:relnum : v:lnum < 10 ? v:lnum . '' : v:lnum) : ''}%=%s"
+-- vim.opt.statuscolumn = "%=%{v:virtnum < 1 ? (v:relnum ? v:relnum : v:lnum < 10 ? v:lnum . '' : v:lnum) : ''}%=%s"
 vim.o.signcolumn = "yes"
 vim.api.nvim_set_hl(0, 'SignColumn', { clear }) -- sign column without background
 vim.o.wrap = false                              -- display lines as one long line
@@ -232,6 +248,7 @@ vim.o.termguicolors = true
 -- Keymaps for better default experience
 -- See `:help vim.keymap.set()`
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
+
 
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
@@ -270,6 +287,19 @@ vim.keymap.set('n', '<leader>/', function()
     previewer = false,
   })
 end, { desc = '[/] Fuzzily search in current buffer' })
+
+-- Configure `ruff-lsp`.
+-- See: https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#ruff_lsp
+-- For the default config, along with instructions on how to customize the settings
+require('lspconfig').ruff_lsp.setup {
+  init_options = {
+    settings = {
+      -- Any extra CLI arguments for `ruff` go here.
+      args = {},
+    }
+  }
+}
+
 
 vim.keymap.set('n', '<leader>gf', require('telescope.builtin').git_files, { desc = 'Search [G]it [F]iles' })
 vim.keymap.set('n', '<leader>gc', require('telescope.builtin').git_bcommits, { desc = '[G]it [C]ommits' })
