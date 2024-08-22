@@ -21,7 +21,6 @@ vim.opt.rtp:prepend(lazypath)
 require('lazy').setup({
   'tpope/vim-fugitive',
   'tpope/vim-rhubarb',
-
   -- Detect tabstop and shiftwidth automatically
   'tpope/vim-sleuth',
   {
@@ -54,9 +53,7 @@ require('lazy').setup({
         delay = 1000,
         ignore_whitespace = false,
       },
-      current_line_blame_formatter_opts = {
-        relative_time = false,
-      },
+      current_line_blame_formatter = '<author>, <author_time:%R> - <summary>',
       signs = {
         add = { text = '+' },
         change = { text = '~' },
@@ -119,11 +116,11 @@ require('lazy').setup({
     lazy = false,
     priority = 1000, -- make sure to load this before all the other start plugins
     -- Optional; default configuration will be used if setup isn't called.
-    config = function()
-      require("everforest").setup({
-        -- Your config here
-      })
-    end
+    -- config = function()
+    --   require("everforest").setup({
+    --     -- Your config here
+    --   })
+    -- end
   },
   {
     "ellisonleao/gruvbox.nvim",
@@ -154,12 +151,12 @@ require('lazy').setup({
     },
   },
   -- config =   },
-  {
-    'lukas-reineke/indent-blankline.nvim',
-    -- See `:help ibl`
-    main = 'ibl',
-    opts = {},
-  },
+  -- {
+  --   'lukas-reineke/indent-blankline.nvim',
+  --   -- See `:help ibl`
+  --   main = 'ibl',
+  --   opts = {},
+  -- },
   { 'numToStr/Comment.nvim', opts = {} },
   {
     'nvim-telescope/telescope.nvim',
@@ -197,9 +194,6 @@ require('lazy').setup({
 -- Select default colorscheme
 vim.cmd.colorscheme 'everforest'
 
-require("lazy").setup({
-})
-
 -- [[ Setting options ]]
 -- See `:help vim.o`
 
@@ -212,7 +206,7 @@ vim.o.hlsearch = true           -- highlight all matches on previous search patt
 vim.o.ignorecase = true         -- ignore case in search patterns
 vim.o.mouse = "a"               -- allow the mouse to be used in neovim
 vim.o.pumheight = 10            -- pop up menu height
-vim.o.showmode = false          -- we don't need to see things like -- INSERT -- anymore
+vim.o.showmode = false          -- we don't need to see things like -- insert -- anymore
 vim.o.smartcase = true          -- smart case
 vim.o.smartindent = true        -- make indenting smarter again
 vim.o.splitbelow = true         -- force all horizontal splits to go below current window
@@ -229,14 +223,14 @@ vim.o.cursorline = true         -- highlight the current line
 vim.o.number = false            -- set numbered lines
 vim.o.relativenumber = false    -- set relative numbered lines
 vim.o.numberwidth = 1           -- set number column width to 2 {default 4}
--- vim.opt.statuscolumn = "%=%{v:virtnum < 1 ? (v:relnum ? v:relnum : v:lnum < 10 ? v:lnum . '' : v:lnum) : ''}%=%s"
+vim.opt.statuscolumn = "%=%{v:virtnum < 1 ? (v:relnum ? v:relnum : v:lnum < 10 ? v:lnum . '' : v:lnum) : ''}%=%s"
 vim.o.signcolumn = "yes"
-vim.api.nvim_set_hl(0, 'SignColumn', { clear }) -- sign column without background
+vim.api.nvim_set_hl(0, 'signcolumn', { clear }) -- sign column without background
 vim.o.wrap = false                              -- display lines as one long line
 vim.o.scrolloff = 8                             -- is one of my fav
 vim.o.sidescrolloff = 8
 vim.o.guifont = "monospace:h17"                 -- the font used in graphical neovim applications
-vim.o.laststatus = 3
+vim.o.laststatus = 0
 vim.o.foldlevel = 99
 vim.o.foldenable = true
 vim.o.foldmethod = "indent"
@@ -301,16 +295,17 @@ require('lspconfig').ruff_lsp.setup {
 }
 
 
+vim.keymap.set('n', "<leader>uu", require('undotree').toggle,
+  { desc = '[U]ndoTree Toggle', noremap = true, silent = true })
 vim.keymap.set('n', '<leader>gf', require('telescope.builtin').git_files, { desc = 'Search [G]it [F]iles' })
 vim.keymap.set('n', '<leader>gc', require('telescope.builtin').git_bcommits, { desc = '[G]it [C]ommits' })
-vim.keymap.set('n', '<leader>gc', require('gitsigns.debug.log').diffthis, { desc = '[G]it [D]ifferences' })
+-- vim.keymap.set('n', '<leader>gc', require('gitsigns.debug.log').diffthis, { desc = '[G]it [D]ifferences' })
 vim.keymap.set('n', '<leader>sf', require('telescope.builtin').find_files, { desc = '[S]earch [F]iles' })
 vim.keymap.set('n', '<leader>sh', require('telescope.builtin').help_tags, { desc = '[S]earch [H]elp' })
 vim.keymap.set('n', '<leader>sw', require('telescope.builtin').grep_string, { desc = '[S]earch current [W]ord' })
 vim.keymap.set('n', '<leader>sg', require('telescope.builtin').live_grep, { desc = '[S]earch by [G]rep' })
 vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { desc = '[S]earch [D]iagnostics' })
 vim.keymap.set('n', '<leader>sr', require('telescope.builtin').resume, { desc = '[S]earch [R]esume' })
--- vim.keymap.set('n', '<leader>e', require('mini.files').openjk, { desc = '[E]xplore files' })
 
 -- [[ Configure Treesitter ]]
 -- See `:help nvim-treesitter`
@@ -424,9 +419,6 @@ vim.keymap.set("i", "<A-j>", "<esc><cmd>m .+1<cr>==gi", { desc = "Move down" })
 vim.keymap.set("i", "<A-k>", "<esc><cmd>m .-2<cr>==gi", { desc = "Move up" })
 vim.keymap.set("v", "<A-j>", ":m '>+1<cr>gv=gv", { desc = "Move down" })
 vim.keymap.set("v", "<A-k>", ":m '<-2<cr>gv=gv", { desc = "Move up" })
-
-vim.keymap.set("n", "<leader>bb", "<cmd>e #<cr>", { desc = "Switch to Other Buffer" })
-vim.keymap.set("n", "<leader>`", "<cmd>e #<cr>", { desc = "Switch to Other Buffer" })
 
 -- Close buffers
 vim.keymap.set("n", "<A-ESC>", ":%bd|e#|bd# <CR>")
@@ -545,16 +537,32 @@ local on_attach = function(_, bufnr)
 end
 
 -- document existing key chains
-require('which-key').register {
-  ['<leader>c'] = { name = '[C]ode', _ = 'which_key_ignore' },
-  ['<leader>d'] = { name = '[D]ocument', _ = 'which_key_ignore' },
-  ['<leader>g'] = { name = '[G]it', _ = 'which_key_ignore' },
-  ['<leader>h'] = { name = 'More git', _ = 'which_key_ignore' },
-  ['<leader>r'] = { name = '[R]ename', _ = 'which_key_ignore' },
-  ['<leader>s'] = { name = '[S]earch', _ = 'which_key_ignore' },
-  ['<leader>w'] = { name = '[W]orkspace', _ = 'which_key_ignore' },
-}
+-- require('which-key').register {
+--   ['<leader>c'] = { name = '[C]ode', _ = 'which_key_ignore' },
+--   ['<leader>d'] = { name = '[D]ocument', _ = 'which_key_ignore' },
+--   ['<leader>g'] = { name = '[G]it', _ = 'which_key_ignore' },
+--   ['<leader>h'] = { name = 'More git', _ = 'which_key_ignore' },
+--   ['<leader>r'] = { name = '[R]ename', _ = 'which_key_ignore' },
+--   ['<leader>s'] = { name = '[S]earch', _ = 'which_key_ignore' },
+--   ['<leader>w'] = { name = '[W]orkspace', _ = 'which_key_ignore' },
+-- }
 
+require('which-key').register {
+  { "<leader>c",  group = "[C]ode" },
+  { "<leader>c_", hidden = true },
+  { "<leader>d",  group = "[D]ocument" },
+  { "<leader>d_", hidden = true },
+  { "<leader>g",  group = "[G]it" },
+  { "<leader>g_", hidden = true },
+  { "<leader>h",  group = "More git" },
+  { "<leader>h_", hidden = true },
+  { "<leader>r",  group = "[R]ename" },
+  { "<leader>r_", hidden = true },
+  { "<leader>s",  group = "[S]earch" },
+  { "<leader>s_", hidden = true },
+  { "<leader>w",  group = "[W]orkspace" },
+  { "<leader>w_", hidden = true },
+}
 -- mason-lspconfig requires that these setup functions are called in this order
 -- before setting up the servers.
 require('mason').setup()

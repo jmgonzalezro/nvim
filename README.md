@@ -17,30 +17,29 @@ The main function of this IDE is to use space as function trigger. But it works 
 
 * Mason: Adding code formatters, linters...
 
-*  Nvim-Autopairs: Autoclosing pairs
+* Nvim-Autopairs: Autoclosing pairs
     
-*  Bufferline: Showing opened buffers at the top of the screen and not saved ones
+* Bufferline: Showing opened buffers at the top of the screen and not saved ones
     
-*  LSP: Coding completion plugin
->>>>>>> 8f924d8 (updating and syncing with dotfile version)
+* LSP: Coding completion plugin
     
-*  Comment: Easy and language agnostic commenting tool
+* Comment: Easy and language agnostic commenting tool
     
-*  GitSigns: Showing git activity on action column
+* GitSigns: Showing git activity on action column
     
-*  Indentline-blankline: Showing lines per indentation
+* Indentline-blankline: Showing lines per indentation
     
-*  Mini: Compacted plugins for highlighting word under cursor or easy surround
+* Mini: Compacted plugins for highlighting word under cursor or easy surround
     
-*  Telescope: Fzf, livegrep...
+* Telescope: Fzf, livegrep...
     
-*  Transparent: Easy support for transparency in some terminals
+* Transparent: Easy support for transparency in some terminals
     
-*  Treesitter: Coloring patterns for code
+* Treesitter: Coloring patterns for code
     
-*  Treesittter-context: Pins functions/context at the top of the window if you scroll
+* Treesittter-context: Pins functions/context at the top of the window if you scroll
     
-*  WhichKey: Showing the keymaps you have as a pop up
+* WhichKey: Showing the keymaps you have as a pop up
 
     
 ## Used hotkeys.
