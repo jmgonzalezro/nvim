@@ -35,7 +35,6 @@ return {
             ignore_focus = {},
             always_divide_middle = true,
             -- globalstatus = true,
-            globalstatus = vim.opt.laststatus == 0,
             refresh = {
                 statusline = 1000,
                 tabline = 1000,

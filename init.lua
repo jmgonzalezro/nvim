@@ -230,7 +230,6 @@ vim.o.wrap = false                              -- display lines as one long lin
 vim.o.scrolloff = 8                             -- is one of my fav
 vim.o.sidescrolloff = 8
 vim.o.guifont = "monospace:h17"                 -- the font used in graphical neovim applications
-vim.o.laststatus = 0
 vim.o.foldlevel = 99
 vim.o.foldenable = true
 vim.o.foldmethod = "indent"
@@ -536,18 +535,7 @@ local on_attach = function(_, bufnr)
   end, { desc = 'Format current buffer with LSP' })
 end
 
--- document existing key chains
--- require('which-key').register {
---   ['<leader>c'] = { name = '[C]ode', _ = 'which_key_ignore' },
---   ['<leader>d'] = { name = '[D]ocument', _ = 'which_key_ignore' },
---   ['<leader>g'] = { name = '[G]it', _ = 'which_key_ignore' },
---   ['<leader>h'] = { name = 'More git', _ = 'which_key_ignore' },
---   ['<leader>r'] = { name = '[R]ename', _ = 'which_key_ignore' },
---   ['<leader>s'] = { name = '[S]earch', _ = 'which_key_ignore' },
---   ['<leader>w'] = { name = '[W]orkspace', _ = 'which_key_ignore' },
--- }
-
-require('which-key').register {
+require('which-key').add {
   { "<leader>c",  group = "[C]ode" },
   { "<leader>c_", hidden = true },
   { "<leader>d",  group = "[D]ocument" },
