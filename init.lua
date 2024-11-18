@@ -95,22 +95,6 @@ require('lazy').setup({
     event = "InsertEnter",
     opts = {}
   },
-  -- {
-  --   -- Theme inspired by Atom
-  --   'navarasu/onedark.nvim',
-  --   priority = 1000,
-  --   config = function()
-  --     vim.cmd.colorscheme 'onedark'
-  --   end,
-  -- },
-  -- {
-  --   -- Theme inspired by Atom
-  --   'olimorris/onedarkpro.nvim',
-  --   priority = 0,
-  --   config = function()
-  --     vim.cmd.colorscheme 'onedark_dark'
-  --   end,
-  -- },
   {
     "neanias/everforest-nvim",
     version = false,
@@ -151,13 +135,6 @@ require('lazy').setup({
       transparent_mode = true,
     },
   },
-  -- config =   },
-  -- {
-  --   'lukas-reineke/indent-blankline.nvim',
-  --   -- See `:help ibl`
-  --   main = 'ibl',
-  --   opts = {},
-  -- },
   { 'numToStr/Comment.nvim', opts = {} },
   {
     'nvim-telescope/telescope.nvim',
@@ -271,8 +248,6 @@ require('telescope').setup {
 pcall(require('telescope').load_extension, 'fzf')
 
 -- See `:help telescope.builtin`
-vim.keymap.set('n', '<leader>?', require('telescope.builtin').oldfiles, { desc = '[?] Find recently opened files' })
-vim.keymap.set('n', '<leader><space>', require('telescope.builtin').buffers, { desc = '[ ] Find existing buffers' })
 vim.keymap.set('n', '<leader>/', function()
   -- You can pass additional configuration to telescope to change theme, layout, etc.
   require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
@@ -388,7 +363,6 @@ vim.keymap.set('n', '<leader>hl', vim.diagnostic.open_float, { desc = 'Open floa
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
 
 -- General Keyamps
-vim.keymap.set('n', '<leader>?', require('telescope.builtin').oldfiles, { desc = '[?] Find recently opened files' })
 vim.keymap.set('n', '<leader><space>', require('telescope.builtin').buffers, { desc = '[ ] Find existing buffers' })
 vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
 
@@ -422,10 +396,6 @@ vim.keymap.set("v", "<A-k>", ":m '<-2<cr>gv=gv", { desc = "Move up" })
 
 -- Close buffers
 vim.keymap.set("n", "<A-ESC>", ":%bd|e#|bd# <CR>")
-vim.keymap.set("n", "<leader>bd", ":bd<CR>", { desc = "Close current buffer" })
-
--- Running the current buffer in Python
--- vim.keymap.set("n", "<A-CR>", ":TermExec cmd='python %' size=10 direction=horizontal <CR>")
 
 -- Replace while typing
 vim.keymap.set("n", "<leader>rR", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>", { noremap = false })
