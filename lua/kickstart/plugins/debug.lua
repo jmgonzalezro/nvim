@@ -62,10 +62,18 @@ return {
 
     -- Dap UI setup
     -- For more information, see |:help nvim-dap-ui|
-    dapui.setup(
-    -- Set icons to characters that are more likely to work in every terminal.
-    --    Feel free to remove or use ones that you like more! :)
-    --    Don't feel like these are good choices.
+    dapui.setup({
+      -- Set icons to characters that are more likely to work in every terminal.
+      --    Feel free to remove or use ones that you like more! :)
+      --    Don't feel like these are good choices.
+      vim.fn.sign_define("DapBreakpoint", {
+        text = "🅑 ",
+        texthl = "",
+        linehl = "",
+        numhl = ""
+      }
+      )
+    }
     )
 
     -- Toggle to see last session result. Without this, you can't see session output in case of unhandled exception.
@@ -77,12 +85,12 @@ return {
     dap.listeners.before.launch.dapui_config = function()
       dapui.open()
     end
-    dap.listeners.before.event_terminated.dapui_config = function()
-      dapui.close()
-    end
-    dap.listeners.before.event_exited.dapui_config = function()
-      dapui.close()
-    end
+    -- dap.listeners.before.event_terminated.dapui_config = function()
+    --   dapui.close()
+    -- end
+    -- dap.listeners.before.event_exited.dapui_config = function()
+    --   dapui.close()
+    -- end
 
     -- Install golang specific config
     require('dap-go').setup()
