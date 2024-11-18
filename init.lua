@@ -197,33 +197,32 @@ vim.cmd.colorscheme 'everforest'
 -- [[ Setting options ]]
 -- See `:help vim.o`
 
-vim.o.backup = false            -- creates a backup file
-vim.o.clipboard = "unnamedplus" -- allows neovim to access the system clipboard
-vim.o.cmdheight = 1             -- more space in the neovim command line for displaying messages
-vim.o.conceallevel = 0          -- so that `` is visible in markdown files
-vim.o.fileencoding = "utf-8"    -- the encoding written to a file
-vim.o.hlsearch = true           -- highlight all matches on previous search pattern
-vim.o.ignorecase = true         -- ignore case in search patterns
-vim.o.mouse = "a"               -- allow the mouse to be used in neovim
-vim.o.pumheight = 10            -- pop up menu height
-vim.o.showmode = false          -- we don't need to see things like -- insert -- anymore
-vim.o.smartcase = true          -- smart case
-vim.o.smartindent = true        -- make indenting smarter again
-vim.o.splitbelow = true         -- force all horizontal splits to go below current window
-vim.o.splitright = true         -- force all vertical splits to go to the right of current window
-vim.o.swapfile = false          -- creates a swapfile
-vim.o.timeoutlen = 150          -- time to wait for a mapped sequence to complete (in milliseconds)
-vim.o.undofile = true           -- enable persistent undo
-vim.o.updatetime = 300          -- faster completion (4000ms default)
-vim.o.writebackup = false       -- if a file is being edited by another program (or was written to file while editing with another program), it is not allowed to be edited
-vim.o.expandtab = true          -- convert tabs to spaces
-vim.o.shiftwidth = 4            -- the number of spaces inserted for each indentation
-vim.o.tabstop = 4               -- insert 2 spaces for a tab
-vim.o.cursorline = true         -- highlight the current line
-vim.o.number = false            -- set numbered lines
-vim.o.relativenumber = false    -- set relative numbered lines
-vim.o.numberwidth = 1           -- set number column width to 2 {default 4}
-vim.opt.statuscolumn = "%=%{v:virtnum < 1 ? (v:relnum ? v:relnum : v:lnum < 10 ? v:lnum . '' : v:lnum) : ''}%=%s"
+vim.o.backup = false                            -- creates a backup file
+vim.o.clipboard = "unnamedplus"                 -- allows neovim to access the system clipboard
+vim.o.cmdheight = 1                             -- more space in the neovim command line for displaying messages
+vim.o.conceallevel = 0                          -- so that `` is visible in markdown files
+vim.o.fileencoding = "utf-8"                    -- the encoding written to a file
+vim.o.hlsearch = true                           -- highlight all matches on previous search pattern
+vim.o.ignorecase = true                         -- ignore case in search patterns
+vim.o.mouse = "a"                               -- allow the mouse to be used in neovim
+vim.o.pumheight = 10                            -- pop up menu height
+vim.o.showmode = false                          -- we don't need to see things like -- insert -- anymore
+vim.o.smartcase = true                          -- smart case
+vim.o.smartindent = true                        -- make indenting smarter again
+vim.o.splitbelow = true                         -- force all horizontal splits to go below current window
+vim.o.splitright = true                         -- force all vertical splits to go to the right of current window
+vim.o.swapfile = false                          -- creates a swapfile
+vim.o.timeoutlen = 150                          -- time to wait for a mapped sequence to complete (in milliseconds)
+vim.o.undofile = true                           -- enable persistent undo
+vim.o.updatetime = 300                          -- faster completion (4000ms default)
+vim.o.writebackup = false                       -- if a file is being edited by another program (or was written to file while editing with another program), it is not allowed to be edited
+vim.o.expandtab = true                          -- convert tabs to spaces
+vim.o.shiftwidth = 4                            -- the number of spaces inserted for each indentation
+vim.o.tabstop = 4                               -- insert 2 spaces for a tab
+vim.o.cursorline = true                         -- highlight the current line
+vim.o.number = false                            -- set numbered lines
+vim.o.relativenumber = true                     -- set relative numbered lines
+vim.o.numberwidth = 1                           -- set number column width to 2 {default 4}
 vim.o.signcolumn = "yes"
 vim.api.nvim_set_hl(0, 'signcolumn', { clear }) -- sign column without background
 vim.o.wrap = false                              -- display lines as one long line
@@ -284,7 +283,7 @@ end, { desc = '[/] Fuzzily search in current buffer' })
 -- Configure `ruff-lsp`.
 -- See: https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#ruff_lsp
 -- For the default config, along with instructions on how to customize the settings
-require('lspconfig').ruff_lsp.setup {
+require('lspconfig').ruff.setup {
   init_options = {
     settings = {
       -- Any extra CLI arguments for `ruff` go here.
@@ -298,6 +297,7 @@ vim.keymap.set('n', "<leader>uu", require('undotree').toggle,
   { desc = '[U]ndoTree Toggle', noremap = true, silent = true })
 vim.keymap.set('n', '<leader>gf', require('telescope.builtin').git_files, { desc = 'Search [G]it [F]iles' })
 vim.keymap.set('n', '<leader>gc', require('telescope.builtin').git_bcommits, { desc = '[G]it [C]ommits' })
+vim.keymap.set("n", "<leader>gd", "<cmd>:DiffviewFileHistory<cr>", { desc = '[G]it [D]iff' })
 -- vim.keymap.set('n', '<leader>gc', require('gitsigns.debug.log').diffthis, { desc = '[G]it [D]ifferences' })
 vim.keymap.set('n', '<leader>sf', require('telescope.builtin').find_files, { desc = '[S]earch [F]iles' })
 vim.keymap.set('n', '<leader>sh', require('telescope.builtin').help_tags, { desc = '[S]earch [H]elp' })
