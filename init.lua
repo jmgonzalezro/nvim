@@ -63,10 +63,6 @@ require('lazy').setup({
         changedelete = { text = '~' },
       },
       on_attach = function(bufnr)
-        vim.keymap.set('n', '<leader>hp', require('gitsigns').preview_hunk, { buffer = bufnr, desc = 'Preview git hunk' })
-        vim.keymap.set('n', '<leader>hn', require('gitsigns').next_hunk,
-          { buffer = bufnr, desc = 'Preview next git hunk' })
-
         -- don't override the built-in and fugitive keymaps
         local gs = package.loaded.gitsigns
         vim.keymap.set({ 'n', 'v' }, ']c', function()
@@ -198,7 +194,7 @@ vim.o.expandtab = true                          -- convert tabs to spaces
 vim.o.shiftwidth = 4                            -- the number of spaces inserted for each indentation
 vim.o.tabstop = 4                               -- insert 2 spaces for a tab
 vim.o.cursorline = true                         -- highlight the current line
-vim.o.number = false                            -- set numbered lines
+vim.o.number = true                             -- set numbered lines
 vim.o.relativenumber = true                     -- set relative numbered lines
 vim.o.numberwidth = 1                           -- set number column width to 2 {default 4}
 vim.o.signcolumn = "yes"
@@ -206,7 +202,6 @@ vim.api.nvim_set_hl(0, 'signcolumn', { clear }) -- sign column without backgroun
 vim.o.wrap = false                              -- display lines as one long line
 vim.o.scrolloff = 8                             -- is one of my fav
 vim.o.sidescrolloff = 8
-vim.o.guifont = "monospace:h17"                 -- the font used in graphical neovim applications
 vim.o.foldlevel = 99
 vim.o.foldenable = true
 vim.o.foldmethod = "indent"
@@ -218,6 +213,107 @@ vim.o.termguicolors = true
 -- Keymaps for better default experience
 -- See `:help vim.keymap.set()`
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
+vim.keymap.set('n', "<leader>uu", require('undotree').toggle,
+  { desc = '[U]ndoTree Toggle', noremap = true, silent = true })
+vim.keymap.set('n', '<leader>gf', require('telescope.builtin').git_files, { desc = 'Search [G]it [F]iles' })
+vim.keymap.set('n', '<leader>gc', require('telescope.builtin').git_bcommits, { desc = '[G]it [C]ommits' })
+vim.keymap.set('n', '<leader>gd', '<cmd>:DiffViewFileHistory<cr>', { desc = '[G]it File history [D]iff' })
+vim.keymap.set('n', '<leader>sf', require('telescope.builtin').find_files, { desc = '[S]earch [F]iles' })
+vim.keymap.set('n', '<leader>sh', require('telescope.builtin').help_tags, { desc = '[S]earch [H]elp' })
+vim.keymap.set('n', '<leader>sw', require('telescope.builtin').grep_string, { desc = '[S]earch current [W]ord' })
+vim.keymap.set('n', '<leader>sg', require('telescope.builtin').live_grep, { desc = '[S]earch by [G]rep' })
+vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { desc = '[S]earch [D]iagnostics' })
+vim.keymap.set('n', '<leader>sr', require('telescope.builtin').resume, { desc = '[S]earch [R]esume' })
+-- Diagnostic keymaps
+vim.keymap.set('n', '<leader>?', require('telescope.builtin').oldfiles, { desc = '[?] Find recently opened files' })
+vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous diagnostic message' })
+vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next diagnostic message' })
+vim.keymap.set('n', '<leader>dl', vim.diagnostic.open_float, { desc = 'Open floating [d]iagnostic message/[L]og' })
+vim.keymap.set('n', '<leader>dq', vim.diagnostic.setloclist, { desc = 'Open [d]iagnostics list/[Q]ueue' })
+
+-- General Keyamps
+vim.keymap.set('n', '<leader><space>', require('telescope.builtin').buffers, { desc = '[ ] Find existing buffers' })
+vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
+
+-- better up/down
+vim.keymap.set("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+vim.keymap.set("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
+
+-- Move to window using the <ctrl> hjkl keys
+vim.keymap.set("n", "<C-h>", "<C-w>h", { desc = "Go to left window" })
+vim.keymap.set("n", "<C-j>", "<C-w>j", { desc = "Go to lower window" })
+vim.keymap.set("n", "<C-k>", "<C-w>k", { desc = "Go to upper window" })
+vim.keymap.set("n", "<C-l>", "<C-w>l", { desc = "Go to right window" })
+
+-- Navigate buffers
+vim.keymap.set("n", "<S-l>", ":bnext<CR>", { desc = "Go to the left tab buffer", silent = true })
+vim.keymap.set("n", "<S-h>", ":bprevious<CR>", { desc = "Go to the right tab buffer", silent = true })
+
+-- Resize window using <ctrl> arrow keys
+vim.keymap.set("n", "<C-Up>", "<cmd>resize +2<cr>", { desc = "Increase window height" })
+vim.keymap.set("n", "<C-Down>", "<cmd>resize -2<cr>", { desc = "Decrease window height" })
+vim.keymap.set("n", "<C-Left>", "<cmd>vertical resize -2<cr>", { desc = "Decrease window width" })
+vim.keymap.set("n", "<C-Right>", "<cmd>vertical resize +2<cr>", { desc = "Increase window width" })
+
+-- Move Lines
+vim.keymap.set("n", "<A-j>", "<cmd>m .+1<cr>==", { desc = "Move down" })
+vim.keymap.set("n", "<A-k>", "<cmd>m .-2<cr>==", { desc = "Move up" })
+vim.keymap.set("i", "<A-j>", "<esc><cmd>m .+1<cr>==gi", { desc = "Move down" })
+vim.keymap.set("i", "<A-k>", "<esc><cmd>m .-2<cr>==gi", { desc = "Move up" })
+vim.keymap.set("v", "<A-j>", ":m '>+1<cr>gv=gv", { desc = "Move down" })
+vim.keymap.set("v", "<A-k>", ":m '<-2<cr>gv=gv", { desc = "Move up" })
+
+-- Close buffers
+vim.keymap.set("n", "<A-ESC>", ":%bd|e#|bd# <CR>")
+
+-- Running the current buffer in Python
+-- vim.keymap.set("n", "<A-CR>", ":TermExec cmd='python %' size=10 direction=horizontal <CR>")
+
+-- Replace while typing
+vim.keymap.set("n", "<leader>rR", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>", { noremap = false })
+
+-- Clear search with <esc>
+vim.keymap.set({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>", { desc = "Escape and clear hlsearch" })
+
+-- Better search movement
+vim.keymap.set("n", "n", "nzzzv")
+vim.keymap.set("n", "N", "Nzzzv")
+
+-- Press jk fast to exit
+vim.keymap.set("i", "jk", "<ESC>")
+
+vim.keymap.set({ "n", "x" }, "gw", "*N", { desc = "Search word under cursor" })
+
+-- better indenting
+vim.keymap.set("v", "<", "<gv")
+vim.keymap.set("v", ">", ">gv")
+
+-- Stay in indent line
+vim.keymap.set("v", "p", '"_dP')
+
+-- lazy
+vim.keymap.set("n", "<leader>l", "<cmd>:Lazy<cr>", { desc = "Lazy" })
+
+-- Mason
+vim.keymap.set("n", "<leader>M", "<cmd>:Mason<cr>", { desc = "Mason" })
+
+-- Format
+vim.keymap.set("n", "<leader>ff", "<cmd>:Format<cr>", { desc = "[F]ormat [f]ile" })
+vim.keymap.set("n", "<leader>fb", "<cmd>:!black %<cr>", { desc = "[B]lack [f]ormatter" })
+vim.keymap.set("n", "<leader>fi", "<cmd>:!isort %<cr>", { desc = "Isort [I]mports [f]ormatter" })
+
+-- new file
+vim.keymap.set("n", "<leader>fn", "<cmd>enew<cr>", { desc = "New File" })
+vim.keymap.set("n", "<leader>xl", "<cmd>lopen<cr>", { desc = "Location List" })
+vim.keymap.set("n", "<leader>xq", "<cmd>copen<cr>", { desc = "Quickfix List" })
+
+-- Explore Files
+vim.keymap.set("n", "<leader>e", "<cmd>NvimTreeToggle<cr>", { desc = "[E]xplore files" })
+
+
+-- Gitsigns keys
+vim.keymap.set('n', '<leader>gp', require('gitsigns').preview_hunk, { buffer = bufnr, desc = 'Preview git hunk' })
+vim.keymap.set('n', '<leader>gn', require('gitsigns').nav_hunk, { desc = 'Preview next git hunk' })
 
 
 -- [[ Highlight on yank ]]
@@ -268,27 +364,13 @@ require('lspconfig').ruff.setup {
   }
 }
 
-
-vim.keymap.set('n', "<leader>uu", require('undotree').toggle,
-  { desc = '[U]ndoTree Toggle', noremap = true, silent = true })
-vim.keymap.set('n', '<leader>gf', require('telescope.builtin').git_files, { desc = 'Search [G]it [F]iles' })
-vim.keymap.set('n', '<leader>gc', require('telescope.builtin').git_bcommits, { desc = '[G]it [C]ommits' })
-vim.keymap.set("n", "<leader>gd", "<cmd>:DiffviewFileHistory<cr>", { desc = '[G]it [D]iff' })
--- vim.keymap.set('n', '<leader>gc', require('gitsigns.debug.log').diffthis, { desc = '[G]it [D]ifferences' })
-vim.keymap.set('n', '<leader>sf', require('telescope.builtin').find_files, { desc = '[S]earch [F]iles' })
-vim.keymap.set('n', '<leader>sh', require('telescope.builtin').help_tags, { desc = '[S]earch [H]elp' })
-vim.keymap.set('n', '<leader>sw', require('telescope.builtin').grep_string, { desc = '[S]earch current [W]ord' })
-vim.keymap.set('n', '<leader>sg', require('telescope.builtin').live_grep, { desc = '[S]earch by [G]rep' })
-vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { desc = '[S]earch [D]iagnostics' })
-vim.keymap.set('n', '<leader>sr', require('telescope.builtin').resume, { desc = '[S]earch [R]esume' })
-
 -- [[ Configure Treesitter ]]
 -- See `:help nvim-treesitter`
 -- Defer Treesitter setup after first render to improve startup time of 'nvim {filename}'
 vim.defer_fn(function()
   require('nvim-treesitter.configs').setup {
     -- Add languages to be installed here that you want installed for treesitter
-    ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'tsx', 'javascript', 'typescript', 'vimdoc', 'vim', 'bash' },
+    ensure_installed = { 'lua', 'python', 'rust', 'bash' },
 
     -- Autoinstall languages that are not installed. Defaults to false (but you can change for yourself!)
     auto_install = false,
@@ -356,117 +438,6 @@ vim.defer_fn(function()
   }
 end, 0)
 
--- Diagnostic keymaps
-vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous diagnostic message' })
-vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next diagnostic message' })
-vim.keymap.set('n', '<leader>hl', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })
-vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
-
--- General Keyamps
-vim.keymap.set('n', '<leader><space>', require('telescope.builtin').buffers, { desc = '[ ] Find existing buffers' })
-vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
-
--- better up/down
-vim.keymap.set("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
-vim.keymap.set("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
-
--- Move to window using the <ctrl> hjkl keys
-vim.keymap.set("n", "<C-h>", "<C-w>h", { desc = "Go to left window" })
-vim.keymap.set("n", "<C-j>", "<C-w>j", { desc = "Go to lower window" })
-vim.keymap.set("n", "<C-k>", "<C-w>k", { desc = "Go to upper window" })
-vim.keymap.set("n", "<C-l>", "<C-w>l", { desc = "Go to right window" })
-
--- Navigate buffers
-vim.keymap.set("n", "<S-l>", ":bnext<CR>", { desc = "Go to the left tab buffer" })
-vim.keymap.set("n", "<S-h>", ":bprevious<CR>", { desc = "Go to the right tab buffer" })
-
--- Resize window using <ctrl> arrow keys
-vim.keymap.set("n", "<C-Up>", "<cmd>resize +2<cr>", { desc = "Increase window height" })
-vim.keymap.set("n", "<C-Down>", "<cmd>resize -2<cr>", { desc = "Decrease window height" })
-vim.keymap.set("n", "<C-Left>", "<cmd>vertical resize -2<cr>", { desc = "Decrease window width" })
-vim.keymap.set("n", "<C-Right>", "<cmd>vertical resize +2<cr>", { desc = "Increase window width" })
-
--- Move Lines
-vim.keymap.set("n", "<A-j>", "<cmd>m .+1<cr>==", { desc = "Move down" })
-vim.keymap.set("n", "<A-k>", "<cmd>m .-2<cr>==", { desc = "Move up" })
-vim.keymap.set("i", "<A-j>", "<esc><cmd>m .+1<cr>==gi", { desc = "Move down" })
-vim.keymap.set("i", "<A-k>", "<esc><cmd>m .-2<cr>==gi", { desc = "Move up" })
-vim.keymap.set("v", "<A-j>", ":m '>+1<cr>gv=gv", { desc = "Move down" })
-vim.keymap.set("v", "<A-k>", ":m '<-2<cr>gv=gv", { desc = "Move up" })
-
--- Close buffers
-vim.keymap.set("n", "<A-ESC>", ":%bd|e#|bd# <CR>")
-
--- Replace while typing
-vim.keymap.set("n", "<leader>rR", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>", { noremap = false })
-
--- Clear search with <esc>
-vim.keymap.set({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>", { desc = "Escape and clear hlsearch" })
-
--- Better search movement
-vim.keymap.set("n", "n", "nzzzv")
-vim.keymap.set("n", "N", "Nzzzv")
-
--- Press jk fast to exit
-vim.keymap.set("i", "jk", "<ESC>")
-
--- Clear search, diff update and redraw
--- taken from runtime/lua/_editor.lua
-vim.keymap.set(
-  "n",
-  "<leader>ur",
-  "<Cmd>nohlsearch<Bar>diffupdate<Bar>normal! <C-L><CR>",
-  { desc = "Redraw / clear hlsearch / diff update" }
-)
-
-vim.keymap.set({ "n", "x" }, "gw", "*N", { desc = "Search word under cursor" })
-
--- https://github.com/mhinz/vim-galore#saner-behavior-of-n-and-n
-vim.keymap.set("n", "n", "'Nn'[v:searchforward]", { expr = true, desc = "Next search result" })
-vim.keymap.set("x", "n", "'Nn'[v:searchforward]", { expr = true, desc = "Next search result" })
-vim.keymap.set("o", "n", "'Nn'[v:searchforward]", { expr = true, desc = "Next search result" })
-vim.keymap.set("n", "N", "'nN'[v:searchforward]", { expr = true, desc = "Prev search result" })
-vim.keymap.set("x", "N", "'nN'[v:searchforward]", { expr = true, desc = "Prev search result" })
-vim.keymap.set("o", "N", "'nN'[v:searchforward]", { expr = true, desc = "Prev search result" })
-
--- Add undo break-points
-vim.keymap.set("i", ",", ",<c-g>u")
-vim.keymap.set("i", ".", ".<c-g>u")
-vim.keymap.set("i", ";", ";<c-g>u")
-
--- better indenting
-vim.keymap.set("v", "<", "<gv")
-vim.keymap.set("v", ">", ">gv")
-
--- Stay in indent line
-vim.keymap.set("v", "p", '"_dP')
-
--- lazy
-vim.keymap.set("n", "<leader>l", "<cmd>:Lazy<cr>", { desc = "Lazy" })
-
--- Mason
-vim.keymap.set("n", "<leader>M", "<cmd>:Mason<cr>", { desc = "Mason" })
-
--- Format
-vim.keymap.set("n", "<leader>ff", "<cmd>:Format<cr>", { desc = "Format file" })
-vim.keymap.set("n", "<leader>fb", "<cmd>:!black %<cr>", { desc = "Black formatter" })
-vim.keymap.set("n", "<leader>fi", "<cmd>:!isort %<cr>", { desc = "Isort imports formatter" })
-
--- new file
-vim.keymap.set("n", "<leader>fn", "<cmd>enew<cr>", { desc = "New File" })
-vim.keymap.set("n", "<leader>xl", "<cmd>lopen<cr>", { desc = "Location List" })
-vim.keymap.set("n", "<leader>xq", "<cmd>copen<cr>", { desc = "Quickfix List" })
-
--- slimux
-vim.keymap.set('v', '<leader>rc', ':lua require("slimux").send_highlighted_text()<cr>',
-  { desc = 'Send currently highlighted text to configured tmux pane' })
-vim.keymap.set('n', '<leader>rp', ':lua require("slimux").send_paragraph_text()<cr>',
-  { desc = 'Send paragraph under cursor to configured tmux pane' })
-
-
-
--- Mini Files
-vim.keymap.set("n", "<leader>e", "<cmd>NvimTreeToggle<cr>", { desc = "[E]xplore files" })
 -- [[ Configure LSP ]]
 --  This function gets run when an LSP connects to a particular buffer.
 local on_attach = function(_, bufnr)
@@ -513,8 +484,6 @@ require('which-key').add {
   { "<leader>d_", hidden = true },
   { "<leader>g",  group = "[G]it" },
   { "<leader>g_", hidden = true },
-  { "<leader>h",  group = "More git" },
-  { "<leader>h_", hidden = true },
   { "<leader>r",  group = "[R]ename" },
   { "<leader>r_", hidden = true },
   { "<leader>s",  group = "[S]earch" },
@@ -542,7 +511,6 @@ local servers = {
   -- rust_analyzer = {},
   -- tsserver = {},
   -- html = { filetypes = { 'html', 'twig', 'hbs'} },
-
   lua_ls = {
     Lua = {
       workspace = { checkThirdParty = false },
@@ -625,6 +593,3 @@ cmp.setup {
 }
 
 vim.wo.colorcolumn = "80"
-
--- The line beneath this is called `modeline`. See `:help modeline`
--- vim: ts=2 sts=2 sw=2 et
