@@ -1,7 +1,6 @@
 -- Set <space> as the leader key
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
-vim.opt.laststatus = 3
 
 -- Install package manager
 --    https://github.com/folke/lazy.nvim
@@ -153,6 +152,22 @@ require('lazy').setup({
     },
     build = ':TSUpdate',
   },
+  {
+    "zbirenbaum/copilot-cmp",
+    config = function()
+      require("copilot_cmp").setup()
+    end
+  },
+  {
+    "olimorris/codecompanion.nvim",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-treesitter/nvim-treesitter",
+      -- The following are optional:
+      { "MeanderingProgrammer/render-markdown.nvim", ft = { "markdown", "codecompanion" } },
+    },
+    config = true
+  },
   require 'kickstart.plugins.autoformat',
   require 'kickstart.plugins.debug',
 
@@ -171,6 +186,7 @@ vim.cmd.colorscheme 'everforest'
 -- [[ Setting options ]]
 -- See `:help vim.o`
 
+vim.opt.laststatus = 3
 vim.o.backup = false                            -- creates a backup file
 vim.o.clipboard = "unnamedplus"                 -- allows neovim to access the system clipboard
 vim.o.cmdheight = 1                             -- more space in the neovim command line for displaying messages
@@ -208,6 +224,7 @@ vim.o.foldmethod = "indent"
 vim.o.foldcolumn = '0'
 vim.o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
 vim.o.termguicolors = true
+vim.wo.colorcolumn = "80"
 
 -- [[ Basic Keymaps ]]
 -- Keymaps for better default experience
@@ -587,9 +604,9 @@ cmp.setup {
     end, { 'i', 's' }),
   },
   sources = {
-    { name = 'nvim_lsp' },
-    { name = 'luasnip' },
+    { name = "copilot",  group_index = 2 },
+    { name = "nvim_lsp", group_index = 2 },
+    { name = "path",     group_index = 2 },
+    { name = "luasnip",  group_index = 2 },
   },
 }
-
-vim.wo.colorcolumn = "80"
