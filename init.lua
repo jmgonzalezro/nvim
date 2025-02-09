@@ -44,48 +44,6 @@ require('lazy').setup({
   },
   { 'folke/which-key.nvim',  opts = {} },
   {
-    'lewis6991/gitsigns.nvim',
-    opts = {
-      current_line_blame = true, -- Toggle with `:Gitsigns toggle_current_line_blame`
-      current_line_blame_opts = {
-        virt_text = true,
-        virt_text_pos = "eol", -- 'eol' | 'overlay' | 'right_align'
-        delay = 1000,
-        ignore_whitespace = false,
-      },
-      current_line_blame_formatter = '<author>, <author_time:%R> - <summary>',
-      signs = {
-        add = { text = '+' },
-        change = { text = '~' },
-        delete = { text = '_' },
-        topdelete = { text = '‾' },
-        changedelete = { text = '~' },
-      },
-      on_attach = function(bufnr)
-        -- don't override the built-in and fugitive keymaps
-        local gs = package.loaded.gitsigns
-        vim.keymap.set({ 'n', 'v' }, ']c', function()
-          if vim.wo.diff then
-            return ']c'
-          end
-          vim.schedule(function()
-            gs.next_hunk()
-          end)
-          return '<Ignore>'
-        end, { expr = true, buffer = bufnr, desc = 'Jump to next hunk' })
-        vim.keymap.set({ 'n', 'v' }, '[c', function()
-          if vim.wo.diff then
-            return '[c'
-          end
-          vim.schedule(function()
-            gs.prev_hunk()
-          end)
-          return '<Ignore>'
-        end, { expr = true, buffer = bufnr, desc = 'Jump to previous hunk' })
-      end,
-    },
-  },
-  {
     'windwp/nvim-autopairs',
     event = "InsertEnter",
     opts = {}
@@ -329,8 +287,18 @@ vim.keymap.set("n", "<leader>e", "<cmd>NvimTreeToggle<cr>", { desc = "[E]xplore 
 
 
 -- Gitsigns keys
-vim.keymap.set('n', '<leader>gp', require('gitsigns').preview_hunk, { buffer = bufnr, desc = 'Preview git hunk' })
-vim.keymap.set('n', '<leader>gn', require('gitsigns').nav_hunk, { desc = 'Preview next git hunk' })
+vim.keymap.set('n', '<leader>gn', '<cmd>Gitsigns next_hunk<cr>', { desc = 'Next hunk' })
+vim.keymap.set('n', '<leader>gN', '<cmd>Gitsigns prev_hunk<cr>', { desc = 'Preview hunk' })
+vim.keymap.set('n', '<leader>gh', '<cmd>Gitsigns stage_hunk<cr>', { desc = 'Stage hunk' })
+vim.keymap.set('n', '<leader>gH', '<cmd>Gitsigns undo_stage_hunk<cr>', { desc = 'Undo stage hunk' })
+vim.keymap.set('n', '<leader>gr', '<cmd>Gitsigns reset_hunk<cr>', { desc = 'Reset hunk' })
+vim.keymap.set('n', '<leader>gx', '<cmd>Gitsigns reset_buffer<cr>', { desc = 'Reset hunk' })
+vim.keymap.set('n', '<leader>gp', '<cmd>Gitsigns preview_hunk<cr>', { desc = 'Preview hunk' })
+vim.keymap.set('n', '<leader>gc', '<cmd>Gitsigns blame<cr>', { desc = 'Git Blame' })
+vim.keymap.set('n', '<leader>gs', '<cmd>Gitsigns stage_buffer<cr>', { desc = 'Stage buffer' })
+
+-- Copilot keys
+vim.keymap.set('n', '<leader>ct', "<cmd>CodeCompanionChat Toggle<cr>", { desc = "[C]odeCompanion Chat [T]oggle" })
 
 
 -- [[ Highlight on yank ]]
