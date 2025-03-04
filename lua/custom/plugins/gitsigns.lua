@@ -3,7 +3,7 @@ return {
     requires = {
         'nvim-lua/plenary.nvim', },
     config = {
-        signs                        = {
+        signs = {
             add          = { text = '┃' },
             change       = { text = '┃' },
             delete       = { text = '_' },
