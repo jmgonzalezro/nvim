@@ -132,6 +132,15 @@ require('lazy').setup({
     },
     config = true
   },
+  {
+    "folke/todo-comments.nvim",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    opts = {
+      -- your configuration comes here
+      -- or leave it empty to use the default settings
+      -- refer to the configuration section below
+    }
+  },
   require 'kickstart.plugins.autoformat',
   require 'kickstart.plugins.debug',
 
@@ -150,16 +159,16 @@ vim.cmd.colorscheme 'moonfly'
 
 -- Función para mostrar el entorno virtual de Python
 local function show_venv()
-    if vim.bo.filetype ~= 'python' then
-        return ""
-    end
-    local venv_path = os.getenv('VIRTUAL_ENV')
-    if venv_path == nil then
-        return "<NO VENV>"
-    else
-        local venv_name = vim.fn.fnamemodify(venv_path, ':t')
-        return string.format("  %s", venv_name)
-    end
+  if vim.bo.filetype ~= 'python' then
+    return ""
+  end
+  local venv_path = os.getenv('VIRTUAL_ENV')
+  if venv_path == nil then
+    return "<NO VENV>"
+  else
+    local venv_name = vim.fn.fnamemodify(venv_path, ':t')
+    return string.format("  %s", venv_name)
+  end
 end
 
 _G.show_venv = show_venv
@@ -173,14 +182,14 @@ vim.o.statusline = "%f %y %m %r %{v:lua.show_venv()} %= %-14.(%l,%c%V%) %P"
 vim.opt.laststatus = 3
 vim.o.backup = false                            -- creates a backup file
 vim.o.clipboard = "unnamedplus"                 -- allows neovim to access the system clipboard
-vim.o.cmdheight = 0                             -- more space in the neovim command line for displaying messages
+vim.o.cmdheight = 1                             -- more space in the neovim command line for displaying messages
 vim.o.conceallevel = 0                          -- so that `` is visible in markdown files
 vim.o.fileencoding = "utf-8"                    -- the encoding written to a file
 vim.o.hlsearch = true                           -- highlight all matches on previous search pattern
 vim.o.ignorecase = true                         -- ignore case in search patterns
 vim.o.mouse = "a"                               -- allow the mouse to be used in neovim
 vim.o.pumheight = 10                            -- pop up menu height
-vim.o.showmode = true                          -- we don't need to see things like -- insert -- anymore
+vim.o.showmode = true                           -- we don't need to see things like -- insert -- anymore
 vim.o.smartcase = true                          -- smart case
 vim.o.smartindent = true                        -- make indenting smarter again
 vim.o.splitbelow = true                         -- force all horizontal splits to go below current window
@@ -206,7 +215,7 @@ vim.o.foldlevel = 99
 vim.o.foldenable = true
 vim.o.foldmethod = "indent"
 vim.o.foldcolumn = '0'
-vim.o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
+vim.o.fillchars = [[fold: ,foldopen:,foldsep: ,foldclose:]]
 vim.o.termguicolors = true
 vim.wo.colorcolumn = "80"
 
