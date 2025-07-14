@@ -127,10 +127,15 @@ require('lazy').setup({
     dependencies = {
       "nvim-lua/plenary.nvim",
       "nvim-treesitter/nvim-treesitter",
-      -- The following are optional:
       { "MeanderingProgrammer/render-markdown.nvim", ft = { "markdown", "codecompanion" } },
     },
-    config = true
+    config = function()
+      require("codecompanion").setup({
+        edit = {
+          enable = true,
+        },
+      })
+    end,
   },
   {
     "folke/todo-comments.nvim",
@@ -334,6 +339,13 @@ vim.keymap.set('n', '<leader>gs', '<cmd>Gitsigns stage_buffer<cr>', { desc = 'St
 
 -- Copilot keys
 vim.keymap.set('n', '<leader>ct', "<cmd>CodeCompanionChat Toggle<cr>", { desc = "[C]odeCompanion Chat [T]oggle" })
+vim.keymap.set('n', '<leader>ce', "<cmd>CodeCompanionEdit<cr>", { desc = "[C]odeCompanion [E]dit" })
+vim.keymap.set('n', '<leader>ca', "<cmd>CodeCompanionActions<cr>", { noremap = true, silent = true, desc = "[C]odeCompanion [A]ctions" })
+vim.keymap.set('n', '<leader>cd', "<cmd>CodeCompanionChat Add<cr>", {noremap = true, silent = true, desc = "[C]odeCompanion a[D]d" })
+
+-- Expand 'cc' into 'CodeCompanion' in the command line
+vim.cmd([[cab cc CodeCompanion]])
+
 
 
 -- [[ Highlight on yank ]]
@@ -553,16 +565,14 @@ mason_lspconfig.setup {
   ensure_installed = vim.tbl_keys(servers),
 }
 
-mason_lspconfig.setup_handlers {
-  function(server_name)
+for _, server_name in ipairs(mason_lspconfig.get_installed_servers()) do
     require('lspconfig')[server_name].setup {
-      capabilities = capabilities,
-      on_attach = on_attach,
-      settings = servers[server_name],
-      filetypes = (servers[server_name] or {}).filetypes,
+        capabilities = capabilities,
+        on_attach = on_attach,
+        settings = servers[server_name],
+        filetypes = (servers[server_name] or {}).filetypes,
     }
-  end,
-}
+end
 
 -- [[ Configure nvim-cmp ]]
 -- See `:help cmp`
