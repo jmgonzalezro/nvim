@@ -15,7 +15,7 @@ return {
                     open = "<M-CR>"
                 },
                 layout = {
-                    position = "bottom", -- | top | left | right
+                    position = "left", -- | top | left | right
                     ratio = 0.4
                 },
             },

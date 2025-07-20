@@ -136,6 +136,9 @@ require('lazy').setup({
         },
       })
     end,
+    strategies = {
+      chat = { adapter = 'copilot' },
+    },
   },
   {
     "folke/todo-comments.nvim",
@@ -146,9 +149,61 @@ require('lazy').setup({
       -- refer to the configuration section below
     }
   },
+  {
+    "yetone/avante.nvim",
+    -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
+    -- ⚠️ must add this setting! ! !
+    build = "make",
+    event = "VeryLazy",
+    version = false, -- Never set this value to "*"! Never!
+    ---@module 'avante'
+    ---@type avante.Config
+    opts = {
+      -- add any opts here
+      -- for example
+      provider = "copilot",
+    },
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "MunifTanjim/nui.nvim",
+      --- The below dependencies are optional,
+      "echasnovski/mini.pick", -- for file_selector provider mini.pick
+      "nvim-telescope/telescope.nvim", -- for file_selector provider telescope
+      "hrsh7th/nvim-cmp", -- autocompletion for avante commands and mentions
+      "ibhagwan/fzf-lua", -- for file_selector provider fzf
+      "stevearc/dressing.nvim", -- for input provider dressing
+      "folke/snacks.nvim", -- for input provider snacks
+      "nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
+      "zbirenbaum/copilot.lua", -- for providers='copilot'
+      {
+        -- support for image pasting
+        "HakonHarnes/img-clip.nvim",
+        event = "VeryLazy",
+        opts = {
+          -- recommended settings
+          default = {
+            embed_image_as_base64 = false,
+            prompt_for_file_name = false,
+            drag_and_drop = {
+              insert_mode = true,
+            },
+            -- required for Windows users
+            use_absolute_path = true,
+          },
+        },
+      },
+      {
+        -- Make sure to set this up properly if you have lazy=true
+        'MeanderingProgrammer/render-markdown.nvim',
+        opts = {
+          file_types = { "markdown", "Avante" },
+        },
+        ft = { "markdown", "Avante" },
+      },
+    },
+  },
   require 'kickstart.plugins.autoformat',
   require 'kickstart.plugins.debug',
-
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
   --    You can use this folder to prevent any conflicts with this init.lua if you're interested in keeping
   --    up-to-date with whatever is in the kickstart repo.
@@ -338,9 +393,9 @@ vim.keymap.set('n', '<leader>gc', '<cmd>Gitsigns blame<cr>', { desc = 'Git Blame
 vim.keymap.set('n', '<leader>gs', '<cmd>Gitsigns stage_buffer<cr>', { desc = 'Stage buffer' })
 
 -- Copilot keys
-vim.keymap.set('n', '<leader>ct', "<cmd>CodeCompanionChat Toggle<cr>", { desc = "[C]odeCompanion Chat [T]oggle" })
+vim.keymap.set('n', '<leader>cc', "<cmd>CodeCompanionChat Toggle<cr>", { desc = "[C]odeCompanion [C]hat Toggle" })
 vim.keymap.set('n', '<leader>ce', "<cmd>CodeCompanionEdit<cr>", { desc = "[C]odeCompanion [E]dit" })
-vim.keymap.set('n', '<leader>ca', "<cmd>CodeCompanionActions<cr>", { noremap = true, silent = true, desc = "[C]odeCompanion [A]ctions" })
+vim.keymap.set('n', '<leader>cA', "<cmd>CodeCompanionActions<cr>", { noremap = true, silent = true, desc = "[C]odeCompanion [A]ctions" })
 vim.keymap.set('n', '<leader>cd', "<cmd>CodeCompanionChat Add<cr>", {noremap = true, silent = true, desc = "[C]odeCompanion a[D]d" })
 
 -- Expand 'cc' into 'CodeCompanion' in the command line
