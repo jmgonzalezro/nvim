@@ -442,14 +442,8 @@ end, { desc = '[/] Fuzzily search in current buffer' })
 -- Configure `ruff-lsp`.
 -- See: https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#ruff_lsp
 -- For the default config, along with instructions on how to customize the settings
-require('lspconfig').ruff.setup {
-  init_options = {
-    settings = {
-      -- Any extra CLI arguments for `ruff` go here.
-      args = {},
-    }
-  }
-}
+
+vim.lsp.config("ruff", {})
 
 -- [[ Configure Treesitter ]]
 -- See `:help nvim-treesitter`
@@ -621,12 +615,14 @@ mason_lspconfig.setup {
 }
 
 for _, server_name in ipairs(mason_lspconfig.get_installed_servers()) do
-    require('lspconfig')[server_name].setup {
+    vim.lsp.config("server_name", {
+      flags = {
         capabilities = capabilities,
         on_attach = on_attach,
         settings = servers[server_name],
         filetypes = (servers[server_name] or {}).filetypes,
-    }
+      }
+    })
 end
 
 -- [[ Configure nvim-cmp ]]
