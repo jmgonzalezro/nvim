@@ -243,7 +243,7 @@ vim.opt.laststatus = 3
 vim.o.backup = false                            -- creates a backup file
 vim.o.clipboard = "unnamedplus"                 -- allows neovim to access the system clipboard
 vim.o.cmdheight = 1                             -- more space in the neovim command line for displaying messages
-vim.o.conceallevel = 0                          -- so that `` is visible in markdown files
+vim.o.conceallevel = 2                          -- so that `` is visible in markdown files
 vim.o.fileencoding = "utf-8"                    -- the encoding written to a file
 vim.o.hlsearch = true                           -- highlight all matches on previous search pattern
 vim.o.ignorecase = true                         -- ignore case in search patterns
@@ -287,7 +287,7 @@ vim.keymap.set('n', "<leader>uu", require('undotree').toggle,
   { desc = '[U]ndoTree Toggle', noremap = true, silent = true })
 vim.keymap.set('n', '<leader>gf', require('telescope.builtin').git_files, { desc = 'Search [G]it [F]iles' })
 vim.keymap.set('n', '<leader>gc', require('telescope.builtin').git_bcommits, { desc = '[G]it [C]ommits' })
-vim.keymap.set('n', '<leader>gd', '<cmd>:DiffViewFileHistory<cr>', { desc = '[G]it File history [D]iff' })
+vim.keymap.set('n', '<leader>gd', '<cmd>:DiffviewFileHistory<cr>', { desc = '[G]it File history [D]iff' })
 vim.keymap.set('n', '<leader>sf', require('telescope.builtin').find_files, { desc = '[S]earch [F]iles' })
 vim.keymap.set('n', '<leader>sh', require('telescope.builtin').help_tags, { desc = '[S]earch [H]elp' })
 vim.keymap.set('n', '<leader>sw', require('telescope.builtin').grep_string, { desc = '[S]earch current [W]ord' })
@@ -451,7 +451,7 @@ vim.lsp.config("ruff", {})
 vim.defer_fn(function()
   require('nvim-treesitter.configs').setup {
     -- Add languages to be installed here that you want installed for treesitter
-    ensure_installed = { 'lua', 'python', 'rust', 'bash' },
+    ensure_installed = { 'lua', 'python', 'rust', 'bash', 'markdown', 'markdown_inline' },
 
     -- Autoinstall languages that are not installed. Defaults to false (but you can change for yourself!)
     auto_install = false,
@@ -586,9 +586,9 @@ require('mason-lspconfig').setup()
 --  If you want to override the default filetypes that your language server will attach to you can
 --  define the property 'filetypes' to the map in question.
 local servers = {
+  pyright = {},
   -- clangd = {},
   -- gopls = {},
-  -- pyright = {},
   -- rust_analyzer = {},
   -- tsserver = {},
   -- html = { filetypes = { 'html', 'twig', 'hbs'} },
@@ -615,14 +615,12 @@ mason_lspconfig.setup {
 }
 
 for _, server_name in ipairs(mason_lspconfig.get_installed_servers()) do
-    vim.lsp.config("server_name", {
-      flags = {
-        capabilities = capabilities,
-        on_attach = on_attach,
-        settings = servers[server_name],
-        filetypes = (servers[server_name] or {}).filetypes,
-      }
-    })
+  vim.lsp.config(server_name, {
+    capabilities = capabilities,
+    on_attach = on_attach,
+    settings = servers[server_name],
+    filetypes = (servers[server_name] or {}).filetypes,
+  })
 end
 
 -- [[ Configure nvim-cmp ]]
