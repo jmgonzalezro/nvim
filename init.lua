@@ -131,14 +131,34 @@ require('lazy').setup({
     },
     config = function()
       require("codecompanion").setup({
-        edit = {
-          enable = true,
+        strategies = {
+          chat = {
+            adapter = "copilot",
+          },
+          inline = {
+            adapter = "copilot",
+          },
+        },
+        adapters = {
+          copilot = function()
+            return require("codecompanion.adapters").extend("copilot", {
+              schema = {
+                model = {
+                  default = function()
+                    local models = require("codecompanion.adapters.http.copilot.get_models").choices()
+                    -- Seleccionar el modelo más potente disponible
+                                        table.sort(models, function(a, b)
+                                          return (a.description or "") > (b.description or "")
+                                        end)
+                                        return models[1].id
+                  end,
+                },
+              },
+            })
+          end,
         },
       })
     end,
-    strategies = {
-      chat = { adapter = 'copilot' },
-    },
   },
   {
     "folke/todo-comments.nvim",
@@ -422,6 +442,22 @@ require('telescope').setup {
       i = {
         ['<C-u>'] = false,
         ['<C-d>'] = false,
+      },
+    },
+  },
+  pickers = {
+    buffers = {
+      sort_mru = true,
+      sort_lastused = true,
+      show_all_buffers = true,
+      ignore_current_buffer = false,
+      mappings = {
+        i = {
+          ['<C-d>'] = 'delete_buffer',
+        },
+        n = {
+          ['d'] = 'delete_buffer',
+        },
       },
     },
   },
